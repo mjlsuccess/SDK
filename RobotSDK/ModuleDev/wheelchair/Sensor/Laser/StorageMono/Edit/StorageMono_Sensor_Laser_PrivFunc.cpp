@@ -103,11 +103,8 @@ bool DECOFUNC(processMonoDrainData)(void * paramsPtr, void * varsPtr, QVector<vo
         vars->file.write((char *)&unit,sizeof(unit));
         vars->writehead=0;
     }
-    int i,n=drainData.size();
-    if(n==0)
-    {
-        return 0;
-    }
+    int i, n=draindata.size();
+
     for(i=n-1;i>=0;i--)
     {
         SensorTimer_Sensor_Laser_Data * data=(SensorTimer_Sensor_Laser_Data *)drainData[i];

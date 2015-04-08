@@ -61,13 +61,13 @@ public:
 public:
 	//*******************Please add variables below*******************
     QextSerialPort *serialport;
-    long quryinterval;
+    int quryinterval;
     double roll, pitch, yaw, lastyaw;
-    long leftencoder, rightencoder, lastleftencoder,lastrightencoder;
+    int leftencoder, rightencoder, lastleftencoder,lastrightencoder;
     double leftspeed, rightspeed, leftodom, rightodom;
     double x, y, theta, deltaleft, deltaright, deltatheta;
     QTime qlasttimestamp;
-    long encoderrange; //编码器转一圈对应的脉冲数
+    int encoderrange; //编码器转一圈对应的脉冲数
     double pi;
     bool isinit;
 };

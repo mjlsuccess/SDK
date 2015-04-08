@@ -22,7 +22,10 @@ SOURCES += \
 	./Sensor/Laser/StorageMono/Edit/StorageMono_Sensor_Laser_PrivFunc.cpp	\
 	./Sensor/Laser/StorageMono/NoEdit/StorageMono_Sensor_Laser_PrivCoreFunc.cpp	\
 	./Sensor/Laser/VisualizationMono/Edit/VisualizationMono_Sensor_Laser_PrivFunc.cpp	\
-	./Sensor/Laser/VisualizationMono/NoEdit/VisualizationMono_Sensor_Laser_PrivCoreFunc.cpp	
+	./Sensor/Laser/VisualizationMono/NoEdit/VisualizationMono_Sensor_Laser_PrivCoreFunc.cpp	\
+\
+	./Sensor/Camera/Simulator/Edit/Simulator_Sensor_Camera_PrivFunc.cpp	\
+	./Sensor/Camera/Simulator/NoEdit/Simulator_Sensor_Camera_PrivCoreFunc.cpp	
 
 HEADERS += \
 	./Sensor/Camera/SensorInternalEvent/Edit/SensorInternalEvent_Sensor_Camera_ParamsData.h	\
@@ -72,5 +75,14 @@ HEADERS += \
 	./Sensor/Laser/VisualizationMono/Edit/VisualizationMono_Sensor_Laser_ParamsData.h	\
 	./Sensor/Laser/VisualizationMono/Edit/VisualizationMono_Sensor_Laser_Vars.h	\
 	./Sensor/Laser/VisualizationMono/NoEdit/VisualizationMono_Sensor_Laser_PrivFunc.h	\
-	./Sensor/Laser/VisualizationMono/NoEdit/VisualizationMono_Sensor_Laser_PrivCoreFunc.h	
+	./Sensor/Laser/VisualizationMono/NoEdit/VisualizationMono_Sensor_Laser_PrivCoreFunc.h	\
+\
+	./Sensor/Laser/Simulator/Edit/Simulator_Sensor_Laser_ParamsData.h	\
+	./Sensor/Laser/Simulator/Edit/Simulator_Sensor_Laser_Vars.h	\
+	./Sensor/Laser/Simulator/NoEdit/Simulator_Sensor_Laser_PrivFunc.h	\
+	./Sensor/Laser/Simulator/NoEdit/Simulator_Sensor_Laser_PrivCoreFunc.h	\
+	./Sensor/Camera/Simulator/Edit/Simulator_Sensor_Camera_ParamsData.h	\
+	./Sensor/Camera/Simulator/Edit/Simulator_Sensor_Camera_Vars.h	\
+	./Sensor/Camera/Simulator/NoEdit/Simulator_Sensor_Camera_PrivFunc.h	\
+	./Sensor/Camera/Simulator/NoEdit/Simulator_Sensor_Camera_PrivCoreFunc.h	
 

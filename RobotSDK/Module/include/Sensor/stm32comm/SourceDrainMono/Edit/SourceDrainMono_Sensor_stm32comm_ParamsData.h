@@ -89,7 +89,7 @@ public:
     ParityType parity;
     StopBitsType stopbits;
     FlowType flowtype;
-    long timeout;
+    int timeout;
     QextSerialPort::QueryMode qurymodel;
     //串口接受数据头，和数据大小
     QByteArray recv_packhead;
@@ -101,7 +101,7 @@ public:
 
     double WheelBase, WheelRadius, ratio;
 
-    long maxpusle;
+    int maxpusle;
     double distPerPulse;
 };
 
