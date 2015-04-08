@@ -1,0 +1,6 @@
+<map id="DrainMulti_Library" name="DrainMulti_Library">
+<area shape="rect" id="node1" href="$group___transmitter_multi___library.html" title="The Library of TransmitterMulti. " alt="" coords="328,5,491,32"/>
+<area shape="rect" id="node2" href="$group___storage_multi___library.html" title="The Library of StorageMulti. " alt="" coords="339,56,480,83"/>
+<area shape="rect" id="node5" href="$group___visualization_multi___library.html" title="The Library of VisualizationMulti. " alt="" coords="347,107,471,149"/>
+<area shape="rect" id="node4" href="$group___node___library.html" title="The library of the RobotSDK&#39;s node. " alt="" coords="5,56,104,83"/>
+</map>

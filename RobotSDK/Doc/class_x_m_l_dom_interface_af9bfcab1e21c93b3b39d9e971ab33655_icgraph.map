@@ -1,0 +1,6 @@
+<map id="XMLDomInterface::getParamValue" name="XMLDomInterface::getParamValue">
+<area shape="rect" id="node2" href="$class_x_m_l_dom_interface.html#aababb39b037ead90a2c2c69de6f28c4c" title="Get parameter&#39;s bool value. " alt="" coords="249,5,441,46"/>
+<area shape="rect" id="node3" href="$class_x_m_l_dom_interface.html#ae009b3b1b17f5337a5bdee391ac18c94" title="Get parameter&#39;s EnumType value. " alt="" coords="251,70,439,111"/>
+<area shape="rect" id="node4" href="$class_x_m_l_dom_interface.html#acbe238f9a943e09bc81256126fe4697b" title="Get parameter&#39;s EnumType unsigned value. " alt="" coords="246,135,445,177"/>
+<area shape="rect" id="node5" href="$class_x_m_l_dom_interface.html#a0784a406714d64a9cf6982d306a92536" title="Get list of parameter&#39;s values&#39; name. " alt="" coords="249,201,441,242"/>
+</map>

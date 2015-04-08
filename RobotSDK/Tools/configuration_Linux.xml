@@ -1,0 +1,25 @@
+<!DOCTYPE Configuration>
+<Configuration>
+  <RobotSDK>
+    <RobotSDK_Kernel PATH="0">
+      <Kernel>/home/wheel/SDK/RobotSDK/Kernel</Kernel>
+    </RobotSDK_Kernel>
+    <RobotSDK_ModuleDev PATH="0">
+      <ModuleDev>/home/wheel/SDK/RobotSDK/ModuleDev</ModuleDev>
+    </RobotSDK_ModuleDev>
+    <RobotSDK_Module PATH="0">
+      <Module>/home/wheel/SDK/RobotSDK/Module/include</Module>
+    </RobotSDK_Module>
+    <RobotSDK_SharedLibrary PATH="1">
+      <SharedLibrary>/home/wheel/SDK/RobotSDK/Module/SharedLibrary</SharedLibrary>
+    </RobotSDK_SharedLibrary>
+    <RobotSDK_Tools PATH="1">
+      <Tools>/home/wheel/SDK/RobotSDK/Tools</Tools>
+    </RobotSDK_Tools>
+  </RobotSDK>
+  <RobotDep>
+    <RobotDep_Include PATH="0"/>
+    <RobotDep_Lib PATH="0"/>
+    <RobotDep_Bin PATH="0"/>
+  </RobotDep>
+</Configuration>

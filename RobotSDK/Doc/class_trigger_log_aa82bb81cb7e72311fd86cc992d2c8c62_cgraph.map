@@ -1,0 +1,12 @@
+<map id="TriggerLog::TriggerLog" name="TriggerLog::TriggerLog">
+<area shape="rect" id="node2" href="$class_node.html#a7aa9bd6f1773a929372a098abfbf24ab" title="Get the type&#45;name of the node. " alt="" coords="241,5,380,32"/>
+<area shape="rect" id="node3" href="$class_node.html#a1f2eab572f4a637aad00c62b4bce5fc2" title="Get the class&#45;name of the node. " alt="" coords="239,56,383,83"/>
+<area shape="rect" id="node4" href="$class_node.html#a697c20c09f4ff253fb631b5f73b7632f" title="Get the node&#45;name of the node. " alt="" coords="238,107,383,133"/>
+<area shape="rect" id="node5" href="$class_trigger_log.html#a45b51f0fa347d968ecbf5d2002b146c4" title="Slot function to save log. " alt="" coords="239,157,382,184"/>
+<area shape="rect" id="node6" href="$class_trigger_log.html#a4f8235486340ff4f3b8ab14019f6803a" title="Slot function to clear log. " alt="" coords="239,208,382,235"/>
+<area shape="rect" id="node7" href="$class_trigger_log.html#a1d442ae070f76ee4abadaa6ca4bf18a1" title="Slot function to receive openNodeSignal() from Node. " alt="" coords="224,259,397,285"/>
+<area shape="rect" id="node8" href="$class_trigger_log.html#a70a4799b0cf87c238625324a6613f250" title="Slot function to receive openNodeErrorSignal() from Node. " alt="" coords="210,309,411,336"/>
+<area shape="rect" id="node9" href="$class_trigger_log.html#ac3116e6aab48533b5a973a5c1b4b13ed" title="Slot function to receive closeNodeSignal() from Node. " alt="" coords="223,360,399,387"/>
+<area shape="rect" id="node10" href="$class_trigger_log.html#ab953c1bdd5048e31643b47175a815378" title="Slot function to receive closeNodeErrorSignal() from Node. " alt="" coords="209,411,413,437"/>
+<area shape="rect" id="node11" href="$class_trigger_log.html#a31960afcd0bca80e256a9ec3691ea33f" title="Slot function to receive trigger signal from Node. " alt="" coords="205,461,416,488"/>
+</map>

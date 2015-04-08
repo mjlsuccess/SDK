@@ -1,0 +1,4 @@
+<map id="SourceDrain::processDrainDataSignal" name="SourceDrain::processDrainDataSignal">
+<area shape="rect" id="node2" href="$class_source_drain_mono.html#acdc0089cfb7363bacf3d9dd83c899206" title="The slot function for processing mono drain data. " alt="" coords="233,5,413,46"/>
+<area shape="rect" id="node3" href="$class_source_drain_multi.html#a03dc45fd900811bc52e468804a6cb49b" title="The slot function for processing multi drain data. " alt="" coords="235,70,411,111"/>
+</map>

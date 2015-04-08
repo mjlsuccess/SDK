@@ -1,0 +1,7 @@
+<map id="Modules" name="Modules">
+<area shape="rect" id="node1" href="$group___processor.html" title="The Processor node. " alt="" coords="239,5,321,32"/>
+<area shape="rect" id="node2" href="$group___kernel.html" title="Kernel defines the basic framework of Robot SDK. " alt="" coords="5,81,64,108"/>
+<area shape="rect" id="node4" href="$group___source_drain.html" title="The SourceDrain node. " alt="" coords="233,56,327,83"/>
+<area shape="rect" id="node5" href="$group___source.html" title="The Source node. " alt="" coords="249,107,311,133"/>
+<area shape="rect" id="node6" href="$group___drain.html" title="The Drain node. " alt="" coords="253,157,307,184"/>
+</map>

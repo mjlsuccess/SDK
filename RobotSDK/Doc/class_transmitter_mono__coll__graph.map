@@ -1,0 +1,6 @@
+<map id="TransmitterMono" name="TransmitterMono">
+<area shape="rect" id="node2" href="$class_drain_mono.html" title="DrainMono is derived from Drain. It can only process mono drain data. " alt="" coords="23,251,108,277"/>
+<area shape="rect" id="node3" href="$class_drain.html" title="Drain is one of the four basic modules. It can only process drain data. " alt="" coords="39,173,92,200"/>
+<area shape="rect" id="node4" href="$class_node.html" title="Class Node is the base for other modular node class in the data&#45;stream graph model. " alt="" coords="39,96,92,123"/>
+<area shape="rect" id="node5" href="$class_q_object.html" title="QObject in Qt. " alt="" coords="30,5,100,32"/>
+</map>

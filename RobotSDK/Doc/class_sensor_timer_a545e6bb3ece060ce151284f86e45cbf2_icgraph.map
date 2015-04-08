@@ -1,0 +1,6 @@
+<map id="SensorTimer::startTimerSignal" name="SensorTimer::startTimerSignal">
+<area shape="rect" id="node2" href="$class_sensor_timer.html#a6f78e011d7a0796c829fa5d3103c01cb" title="Constructor of SensorTimer. " alt="" coords="257,5,436,32"/>
+<area shape="rect" id="node3" href="$class_sensor_timer.html#aca035aea44d9806379d7caddbc9ff0bb" title="Destructor of SensorTimer. Stop timerthread. " alt="" coords="253,56,440,83"/>
+<area shape="rect" id="node4" href="$class_sensor_timer.html#a491c40fd8ec5534d3a715c2411fd1dba" title="Set timer&#39;s interval to msec. " alt="" coords="257,107,436,133"/>
+<area shape="rect" id="node5" href="$class_sensor_timer.html#a5c4580f22cfd361bf12786081ca28938" title="Start timer. " alt="" coords="253,157,440,184"/>
+</map>

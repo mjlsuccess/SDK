@@ -1,0 +1,9 @@
+<map id="Source_Library" name="Source_Library">
+<area shape="rect" id="node2" href="$group___simulator___library.html" title="The Library of Simulator. " alt="" coords="321,5,444,32"/>
+<area shape="rect" id="node3" href="$group___sensor_external_event___library.html" title="The Library of SensorExternalEvent. " alt="" coords="310,57,455,98"/>
+<area shape="rect" id="node5" href="$group___sensor_timer___library.html" title="The Library of SensorTimer. " alt="" coords="311,123,454,149"/>
+<area shape="rect" id="node6" href="$group___user_interact___library.html" title="The Library of UserInteractMono. " alt="" coords="313,173,453,200"/>
+<area shape="rect" id="node7" href="$group___user_input___library.html" title="The Library of UserInput. " alt="" coords="320,224,445,251"/>
+<area shape="rect" id="node8" href="$group___sensor_internal_event___library.html" title="The Library of SensorInternalEvent. " alt="" coords="313,275,453,317"/>
+<area shape="rect" id="node4" href="$group___node___library.html" title="The library of the RobotSDK&#39;s node. " alt="" coords="5,148,104,175"/>
+</map>

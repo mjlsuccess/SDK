@@ -1,0 +1,6 @@
+<map id="SensorTimer::stopTimerSignal" name="SensorTimer::stopTimerSignal">
+<area shape="rect" id="node2" href="$class_sensor_timer.html#a6f78e011d7a0796c829fa5d3103c01cb" title="Constructor of SensorTimer. " alt="" coords="257,5,436,32"/>
+<area shape="rect" id="node3" href="$class_sensor_timer.html#aca035aea44d9806379d7caddbc9ff0bb" title="Destructor of SensorTimer. Stop timerthread. " alt="" coords="253,56,440,83"/>
+<area shape="rect" id="node4" href="$class_sensor_timer.html#a5e061541f52f18d5a066b6762621ed24" title="Stop timer. " alt="" coords="254,107,439,133"/>
+<area shape="rect" id="node5" href="$class_sensor_timer.html#a93201a76f088ef634b4ec52f2494d5ab" title="The slot function for closing node. " alt="" coords="488,107,677,133"/>
+</map>

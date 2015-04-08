@@ -1,0 +1,4 @@
+<map id="Processor::processInputDataSignal" name="Processor::processInputDataSignal">
+<area shape="rect" id="node2" href="$class_processor_mono.html#a3fa3d546bebb57494434da1bfa4d8aa1" title="The slot function for processing mono input data. " alt="" coords="246,5,442,46"/>
+<area shape="rect" id="node3" href="$class_processor_multi.html#a043ebf0cb96ce4f5a5600df9f23dfadd" title="The slot function for processing multi input data. " alt="" coords="248,70,440,111"/>
+</map>

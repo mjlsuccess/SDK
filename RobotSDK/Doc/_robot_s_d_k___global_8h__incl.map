@@ -1,0 +1,18 @@
+<map id="/home/wheel/Downloads/RobotSDK/Src/Kernel/RobotSDK_Global.h" name="/home/wheel/Downloads/RobotSDK/Src/Kernel/RobotSDK_Global.h">
+<area shape="rect" id="node3" href="$triggerlog_8h.html" title="Defines the TriggerLog. " alt="" coords="1677,208,1829,235"/>
+<area shape="rect" id="node11" href="$node_8h.html" title="Defines the base class Node. " alt="" coords="1357,291,1485,317"/>
+<area shape="rect" id="node23" href="$edge_8h.html" title="Defines the class Edge. " alt="" coords="2195,117,2321,144"/>
+<area shape="rect" id="node31" href="$triggerview_8h.html" title="Defines the TriggerView. " alt="" coords="2440,208,2536,235"/>
+<area shape="rect" id="node35" href="$userinput_8h.html" title="Defines the class UserInput. " alt="" coords="1078,110,1271,151"/>
+<area shape="rect" id="node36" href="$source_8h.html" title="Defines the Source node. " alt="" coords="1077,208,1248,235"/>
+<area shape="rect" id="node37" href="$visualization_8h.html" title="Defines the class VisualizationMono and VisualizationMulti. " alt="" coords="104,110,303,151"/>
+<area shape="rect" id="node38" href="$drain_8h.html" title="Defines the Drain Node. " alt="" coords="555,208,703,235"/>
+<area shape="rect" id="node39" href="$transmitter_8h.html" title="Defines the class TransmitterMono and TransmitterMulti. " alt="" coords="328,110,520,151"/>
+<area shape="rect" id="node40" href="$simulator_8h.html" title="Defines the class Simulator. " alt="" coords="1779,110,1969,151"/>
+<area shape="rect" id="node41" href="$sensor_8h.html" title="Defines the class SensorTimer, SensorExternalEvent and SensorInternalEvent. " alt="" coords="1347,110,1524,151"/>
+<area shape="rect" id="node42" href="$sourcedrain_8h.html" title="Defines the SourceDrain node. " alt="" coords="856,201,1003,242"/>
+<area shape="rect" id="node43" href="$userinteract_8h.html" title="ExModules/SourceDrain\l/userinteract.h" alt="" coords="789,110,952,151"/>
+<area shape="rect" id="node44" href="$processor_8h.html" title="Defines the Processor node. " alt="" coords="1549,117,1755,144"/>
+<area shape="rect" id="node45" href="$storage_8h.html" title="Defines the class StorageMono and StorageMulti. " alt="" coords="544,110,715,151"/>
+<area shape="rect" id="node49" href="$xmldominterface_8h.html" title="Defines the class XMLDomInterface. " alt="" coords="3105,201,3308,242"/>
+</map>

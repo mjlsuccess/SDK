@@ -1,0 +1,5 @@
+<map id="SensorExternalEvent" name="SensorExternalEvent">
+<area shape="rect" id="node2" href="$class_source.html" title="Source is one of the four basic modules. It can only generate source data. " alt="" coords="46,173,108,200"/>
+<area shape="rect" id="node3" href="$class_node.html" title="Class Node is the base for other modular node class in the data&#45;stream graph model. " alt="" coords="51,96,104,123"/>
+<area shape="rect" id="node4" href="$class_q_object.html" title="QObject in Qt. " alt="" coords="42,5,112,32"/>
+</map>

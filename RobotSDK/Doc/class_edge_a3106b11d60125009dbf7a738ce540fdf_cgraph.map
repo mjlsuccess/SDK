@@ -1,0 +1,6 @@
+<map id="Edge::Edge" name="Edge::Edge">
+<area shape="rect" id="node2" href="$class_edge.html#ab8cbcac5a6a40fbec4fcb02be171b32d" title="Slot function to set time line appearance. " alt="" coords="156,5,311,32"/>
+<area shape="rect" id="node4" href="$class_edge.html#afd1bd5602b06e01e5692e39a99673230" title="Slot function triggered by timer to draw monitor. (Still has bug) " alt="" coords="178,56,289,83"/>
+<area shape="rect" id="node5" href="$class_edge.html#acdc6508f6a14aeba9517d7f4e55ea2b1" title="Slot function to play or pause monitor,. " alt="" coords="145,107,322,133"/>
+<area shape="rect" id="node3" href="$class_trigger_view.html#aea67683df58edff6147408259a9c3517" title="To set monitor&#39;s time line timerange, timeinterval and zoomratio. " alt="" coords="371,5,541,32"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="Edge::drawSignal" name="Edge::drawSignal">
+<area shape="rect" id="node2" href="$class_edge.html#afd1bd5602b06e01e5692e39a99673230" title="Slot function triggered by timer to draw monitor. (Still has bug) " alt="" coords="179,5,290,32"/>
+<area shape="rect" id="node3" href="$class_edge.html#a3106b11d60125009dbf7a738ce540fdf" title="Constructor of Edge. " alt="" coords="339,5,429,32"/>
+</map>

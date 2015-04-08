@@ -1,0 +1,8 @@
+<map id="DrainMulti" name="DrainMulti">
+<area shape="rect" id="node5" href="$class_storage_multi.html" title="StorageMulti stores multi drain data. " alt="" coords="5,304,99,331"/>
+<area shape="rect" id="node6" href="$class_transmitter_multi.html" title="TransmitterMulti transmitters multi drain data. " alt="" coords="123,304,239,331"/>
+<area shape="rect" id="node7" href="$class_visualization_multi.html" title="VisualizationMulti visualize multi drain data. " alt="" coords="263,304,387,331"/>
+<area shape="rect" id="node2" href="$class_drain.html" title="Drain is one of the four basic modules. It can only process drain data. " alt="" coords="155,155,208,181"/>
+<area shape="rect" id="node3" href="$class_node.html" title="Class Node is the base for other modular node class in the data&#45;stream graph model. " alt="" coords="155,80,208,107"/>
+<area shape="rect" id="node4" href="$class_q_object.html" title="QObject in Qt. " alt="" coords="146,5,216,32"/>
+</map>

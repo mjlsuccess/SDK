@@ -1,0 +1,6 @@
+<map id="Simulator::syncTimeTrackSlot" name="Simulator::syncTimeTrackSlot">
+<area shape="rect" id="node2" href="$class_simulator.html#a96ad1d053b2263803dedfa09be0d515a" title="Stop simulator. " alt="" coords="254,5,442,32"/>
+<area shape="rect" id="node3" href="$class_node.html#ab914403aeddf870261a78ec58b08d101" title="The slot function for closing node. " alt="" coords="275,56,421,83"/>
+<area shape="rect" id="node4" href="$class_node.html#a3b5d78ae516547d513bdce364959eadb" title="The slot function for openning node. " alt="" coords="277,107,419,133"/>
+<area shape="rect" id="node5" href="$class_node.html#ada2841613b0a1fd77e6ed05f03f3a777" title="Function called by node to send Node::nodeTriggerTimeSignal(QString nodeMark, QDateTime curTime..." alt="" coords="269,157,427,184"/>
+</map>

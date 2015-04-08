@@ -1,0 +1,6 @@
+<map id="Node::openNodeSlot" name="Node::openNodeSlot">
+<area shape="rect" id="node2" href="$class_visualization_mono.html#a8afbdb9c3e21da4adba24df2505dcd59" title="Reset the visualization widgets. " alt="" coords="223,5,371,46"/>
+<area shape="rect" id="node3" href="$class_visualization_multi.html#aea0d9e2d3ebfc230a93fc3bb409d1394" title="Reset the visualization widgets. " alt="" coords="219,70,375,111"/>
+<area shape="rect" id="node4" href="$class_simulator.html#a9fc5f1b7bf54acf796a5f0fcebacd5c6" title="Synchronize the timer track. " alt="" coords="198,136,397,163"/>
+<area shape="rect" id="node5" href="$class_simulator.html#a89a9f09a06a233045afd093f6af1ea2d" title="Reset the timer track. " alt="" coords="446,161,645,188"/>
+</map>

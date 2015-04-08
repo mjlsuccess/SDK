@@ -1,0 +1,6 @@
+<map id="VisualizationMulti" name="VisualizationMulti">
+<area shape="rect" id="node2" href="$class_drain_multi.html" title="DrainMulti is derived from Drain. It can only process multi drain data. " alt="" coords="26,229,107,256"/>
+<area shape="rect" id="node3" href="$class_drain.html" title="Drain is one of the four basic modules. It can only process drain data. " alt="" coords="40,155,93,181"/>
+<area shape="rect" id="node4" href="$class_node.html" title="Class Node is the base for other modular node class in the data&#45;stream graph model. " alt="" coords="40,80,93,107"/>
+<area shape="rect" id="node5" href="$class_q_object.html" title="QObject in Qt. " alt="" coords="31,5,101,32"/>
+</map>

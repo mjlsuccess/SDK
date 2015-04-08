@@ -1,0 +1,6 @@
+<map id="TransmitterMulti" name="TransmitterMulti">
+<area shape="rect" id="node2" href="$class_drain_multi.html" title="DrainMulti is derived from Drain. It can only process multi drain data. " alt="" coords="22,251,103,277"/>
+<area shape="rect" id="node3" href="$class_drain.html" title="Drain is one of the four basic modules. It can only process drain data. " alt="" coords="36,173,89,200"/>
+<area shape="rect" id="node4" href="$class_node.html" title="Class Node is the base for other modular node class in the data&#45;stream graph model. " alt="" coords="36,96,89,123"/>
+<area shape="rect" id="node5" href="$class_q_object.html" title="QObject in Qt. " alt="" coords="27,5,97,32"/>
+</map>

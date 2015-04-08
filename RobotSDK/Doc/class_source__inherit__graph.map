@@ -1,0 +1,9 @@
+<map id="Source" name="Source">
+<area shape="rect" id="node4" href="$class_sensor_external_event.html" title="External event driven sensor. " alt="" coords="5,229,149,256"/>
+<area shape="rect" id="node5" href="$class_sensor_internal_event.html" title="Internal event driven sensor. " alt="" coords="174,229,313,256"/>
+<area shape="rect" id="node6" href="$class_sensor_timer.html" title="Timer driven sensor. " alt="" coords="339,229,435,256"/>
+<area shape="rect" id="node7" href="$class_simulator.html" title="Self&#45;driven Simualtor derived from Source. " alt="" coords="459,229,535,256"/>
+<area shape="rect" id="node8" href="$class_user_input.html" title="User Input Node derived from Source. " alt="" coords="561,229,639,256"/>
+<area shape="rect" id="node2" href="$class_node.html" title="Class Node is the base for other modular node class in the data&#45;stream graph model. " alt="" coords="360,80,413,107"/>
+<area shape="rect" id="node3" href="$class_q_object.html" title="QObject in Qt. " alt="" coords="351,5,421,32"/>
+</map>

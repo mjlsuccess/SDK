@@ -1,0 +1,4 @@
+<map id="DrainMulti::processDrainDataSlot" name="DrainMulti::processDrainDataSlot">
+<area shape="rect" id="node2" href="$class_node.html#ada2841613b0a1fd77e6ed05f03f3a777" title="Function called by node to send Node::nodeTriggerTimeSignal(QString nodeMark, QDateTime curTime..." alt="" coords="226,5,385,32"/>
+<area shape="rect" id="node3" href="$class_node.html#aef9ef484cf99dc1044d2a98e59d0ae7d" title="Convert a set of boost shared_ptrs to a set of void pointers. " alt="" coords="222,56,389,83"/>
+</map>

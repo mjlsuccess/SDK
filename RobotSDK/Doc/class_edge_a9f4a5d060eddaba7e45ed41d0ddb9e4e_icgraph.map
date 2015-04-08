@@ -1,0 +1,6 @@
+<map id="Edge::openAllNodesSignal" name="Edge::openAllNodesSignal">
+<area shape="rect" id="node2" href="$class_edge.html#a15729d84c9789f2e01bf5ce92577d14a" title="Add node into nodepool. " alt="" coords="259,5,371,32"/>
+<area shape="rect" id="node3" href="$class_edge.html#a4761da221cdace005fae41b125391569" title="Clear all nodes and their threads. " alt="" coords="271,56,359,83"/>
+<area shape="rect" id="node5" href="$class_edge.html#a6b894c8dc30783dbc542d8d66872ef15" title="Slot function for opening all nodes. " alt="" coords="233,107,397,133"/>
+<area shape="rect" id="node4" href="$class_edge.html#a2f37b72f044427961d6730943daf10e0" title="Destructor of Edge. " alt="" coords="445,56,544,83"/>
+</map>

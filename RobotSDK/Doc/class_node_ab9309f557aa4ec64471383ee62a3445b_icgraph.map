@@ -1,0 +1,7 @@
+<map id="Node::openNodeErrorSignal" name="Node::openNodeErrorSignal">
+<area shape="rect" id="node2" href="$class_node.html#a3b5d78ae516547d513bdce364959eadb" title="The slot function for openning node. " alt="" coords="238,107,381,133"/>
+<area shape="rect" id="node3" href="$class_visualization_mono.html#a8afbdb9c3e21da4adba24df2505dcd59" title="Reset the visualization widgets. " alt="" coords="455,5,603,46"/>
+<area shape="rect" id="node4" href="$class_visualization_multi.html#aea0d9e2d3ebfc230a93fc3bb409d1394" title="Reset the visualization widgets. " alt="" coords="451,70,607,111"/>
+<area shape="rect" id="node5" href="$class_simulator.html#a9fc5f1b7bf54acf796a5f0fcebacd5c6" title="Synchronize the timer track. " alt="" coords="430,136,629,163"/>
+<area shape="rect" id="node6" href="$class_simulator.html#a89a9f09a06a233045afd093f6af1ea2d" title="Reset the timer track. " alt="" coords="678,161,877,188"/>
+</map>

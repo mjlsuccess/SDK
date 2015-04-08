@@ -1,0 +1,5 @@
+<map id="Core" name="Core">
+<area shape="rect" id="node2" href="$group___edge.html" title="The edge of the graph model. " alt="" coords="211,5,263,32"/>
+<area shape="rect" id="node4" href="$group___node.html" title="Node in graph model. " alt="" coords="211,56,264,83"/>
+<area shape="rect" id="node3" href="$group___kernel.html" title="Kernel defines the basic framework of Robot SDK. " alt="" coords="5,31,64,57"/>
+</map>

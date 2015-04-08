@@ -1,0 +1,10 @@
+<map id="Node::getNodeName" name="Node::getNodeName">
+<area shape="rect" id="node2" href="$class_edge.html#ab84e5a27047c2a465b93921513d47ce3" title="Connect two nodes. " alt="" coords="212,5,356,32"/>
+<area shape="rect" id="node4" href="$class_edge.html#a4ee0035690ec2ad22af5ef6a097604a8" title="Disconnect two nodes. " alt="" coords="203,56,365,83"/>
+<area shape="rect" id="node8" href="$class_trigger_log.html#aa82bb81cb7e72311fd86cc992d2c8c62" title="The constructor of the TriggerLog. " alt="" coords="208,107,360,133"/>
+<area shape="rect" id="node9" href="$class_trigger_view.html#a1ac8a56908b12970d1906d2301fe3d5e" title="The constructor of the TriggerView. " alt="" coords="200,157,368,184"/>
+<area shape="rect" id="node3" href="$class_edge.html#afda7af65e3c20b406f7904255f218515" title="Connect all nodes. " alt="" coords="425,5,546,32"/>
+<area shape="rect" id="node5" href="$class_edge.html#a69d55f017d8bdd46fcb51d520a8f4dff" title="Disconnect all nodes. " alt="" coords="416,56,555,83"/>
+<area shape="rect" id="node6" href="$class_edge.html#a4761da221cdace005fae41b125391569" title="Clear all nodes and their threads. " alt="" coords="603,56,691,83"/>
+<area shape="rect" id="node7" href="$class_edge.html#a2f37b72f044427961d6730943daf10e0" title="Destructor of Edge. " alt="" coords="739,56,837,83"/>
+</map>

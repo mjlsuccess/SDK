@@ -1,0 +1,10 @@
+<map id="/home/wheel/Downloads/RobotSDK/Src/Kernel/Modules/Drain/drain.h" name="/home/wheel/Downloads/RobotSDK/Src/Kernel/Modules/Drain/drain.h">
+<area shape="rect" id="node2" href="$storage_8h.html" title="Defines the class StorageMono and StorageMulti. " alt="" coords="74,110,248,181"/>
+<area shape="rect" id="node4" href="$_robot_s_d_k___global_8h.html" title="RobotSDK global definition. " alt="" coords="204,237,368,293"/>
+<area shape="rect" id="node5" href="$transmitter_8h.html" title="Defines the class TransmitterMono and TransmitterMulti. " alt="" coords="325,110,520,181"/>
+<area shape="rect" id="node7" href="$visualization_8h.html" title="Defines the class VisualizationMono and VisualizationMulti. " alt="" coords="545,110,748,181"/>
+<area shape="rect" id="node9" href="$drain_8cpp.html" title="/home/wheel/Downloads\l/RobotSDK/Src/Kernel\l/Modules/Drain/drain.cpp" alt="" coords="773,117,939,173"/>
+<area shape="rect" id="node3" href="$storage_8cpp.html" title="/home/wheel/Downloads\l/RobotSDK/Src/Kernel\l/ExModules/Drain/Storage\l/storage.cpp" alt="" coords="5,230,179,301"/>
+<area shape="rect" id="node6" href="$transmitter_8cpp.html" title="/home/wheel/Downloads\l/RobotSDK/Src/Kernel\l/ExModules/Drain/Transmitter\l/transmitter.cpp" alt="" coords="394,230,589,301"/>
+<area shape="rect" id="node8" href="$visualization_8cpp.html" title="/home/wheel/Downloads\l/RobotSDK/Src/Kernel\l/ExModules/Drain/Visualization\l/visualization.cpp" alt="" coords="614,230,817,301"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="TriggerView::TriggerView" name="TriggerView::TriggerView">
+<area shape="rect" id="node2" href="$class_node.html#a7aa9bd6f1773a929372a098abfbf24ab" title="Get the type&#45;name of the node. " alt="" coords="236,5,375,32"/>
+<area shape="rect" id="node3" href="$class_node.html#a1f2eab572f4a637aad00c62b4bce5fc2" title="Get the class&#45;name of the node. " alt="" coords="233,56,377,83"/>
+<area shape="rect" id="node4" href="$class_node.html#a697c20c09f4ff253fb631b5f73b7632f" title="Get the node&#45;name of the node. " alt="" coords="233,107,378,133"/>
+<area shape="rect" id="node5" href="$class_trigger_view.html#a4c036340d185953669286ae7432692f8" title="Slot function to receive trigger signal from Node. " alt="" coords="222,158,389,199"/>
+<area shape="rect" id="node6" href="$class_trigger_view.html#a1cafa80fac15c7a1210f7b62f3e38759" title="Slot function to draw monitor. " alt="" coords="230,224,381,251"/>
+</map>

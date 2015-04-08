@@ -1,0 +1,4 @@
+<map id="ProcessorMono::processInputDataSlot" name="ProcessorMono::processInputDataSlot">
+<area shape="rect" id="node2" href="$class_node.html#ada2841613b0a1fd77e6ed05f03f3a777" title="Function called by node to send Node::nodeTriggerTimeSignal(QString nodeMark, QDateTime curTime..." alt="" coords="255,5,414,32"/>
+<area shape="rect" id="node3" href="$class_node.html#aef9ef484cf99dc1044d2a98e59d0ae7d" title="Convert a set of boost shared_ptrs to a set of void pointers. " alt="" coords="251,56,418,83"/>
+</map>

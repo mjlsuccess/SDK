@@ -1,0 +1,4 @@
+<map id="SensorTimer::closeNodeSlot" name="SensorTimer::closeNodeSlot">
+<area shape="rect" id="node2" href="$class_sensor_timer.html#a5e061541f52f18d5a066b6762621ed24" title="Stop timer. " alt="" coords="243,5,429,32"/>
+<area shape="rect" id="node3" href="$class_node.html#ab914403aeddf870261a78ec58b08d101" title="The slot function for closing node. " alt="" coords="263,56,409,83"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="Source::generateSourceDataErrorSignal" name="Source::generateSourceDataErrorSignal">
+<area shape="rect" id="node2" href="$class_simulator.html#a9fc5f1b7bf54acf796a5f0fcebacd5c6" title="Synchronize the timer track. " alt="" coords="253,5,451,32"/>
+<area shape="rect" id="node4" href="$class_simulator.html#af0e0565711537b3c1e37e30119772e1f" title="Overload Source::generateSourceDataSlot() to realize self&#45;driven. " alt="" coords="264,57,440,98"/>
+<area shape="rect" id="node6" href="$class_source.html#af9e01358a673d9870baea90ca8071fd1" title="The slot function for generating source data. " alt="" coords="245,123,459,149"/>
+<area shape="rect" id="node3" href="$class_simulator.html#a89a9f09a06a233045afd093f6af1ea2d" title="Reset the timer track. " alt="" coords="507,5,706,32"/>
+<area shape="rect" id="node5" href="$class_simulator.html#add8d571e1822c0389f2151ca921050b9" title="Start simulator. " alt="" coords="512,64,701,91"/>
+</map>

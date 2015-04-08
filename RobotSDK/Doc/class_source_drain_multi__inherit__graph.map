@@ -1,0 +1,6 @@
+<map id="SourceDrainMulti" name="SourceDrainMulti">
+<area shape="rect" id="node5" href="$class_user_interact_multi.html" title="User Interact Multi Node derived from SourceDrainMulti. " alt="" coords="5,304,128,331"/>
+<area shape="rect" id="node2" href="$class_source_drain.html" title="SourceDrain is one of the four basic modules. It can process drain data and generate source data..." alt="" coords="19,155,113,181"/>
+<area shape="rect" id="node3" href="$class_node.html" title="Class Node is the base for other modular node class in the data&#45;stream graph model. " alt="" coords="40,80,93,107"/>
+<area shape="rect" id="node4" href="$class_q_object.html" title="QObject in Qt. " alt="" coords="31,5,101,32"/>
+</map>

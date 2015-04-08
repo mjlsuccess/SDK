@@ -1,0 +1,8 @@
+<map id="Node::getOutputPort" name="Node::getOutputPort">
+<area shape="rect" id="node2" href="$class_edge.html#ab84e5a27047c2a465b93921513d47ce3" title="Connect two nodes. " alt="" coords="207,5,351,32"/>
+<area shape="rect" id="node4" href="$class_edge.html#a4ee0035690ec2ad22af5ef6a097604a8" title="Disconnect two nodes. " alt="" coords="198,56,359,83"/>
+<area shape="rect" id="node3" href="$class_edge.html#afda7af65e3c20b406f7904255f218515" title="Connect all nodes. " alt="" coords="417,5,538,32"/>
+<area shape="rect" id="node5" href="$class_edge.html#a69d55f017d8bdd46fcb51d520a8f4dff" title="Disconnect all nodes. " alt="" coords="408,56,547,83"/>
+<area shape="rect" id="node6" href="$class_edge.html#a4761da221cdace005fae41b125391569" title="Clear all nodes and their threads. " alt="" coords="595,56,683,83"/>
+<area shape="rect" id="node7" href="$class_edge.html#a2f37b72f044427961d6730943daf10e0" title="Destructor of Edge. " alt="" coords="731,56,829,83"/>
+</map>

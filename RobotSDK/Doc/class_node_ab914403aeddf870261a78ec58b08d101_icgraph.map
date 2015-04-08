@@ -1,0 +1,8 @@
+<map id="Node::closeNodeSlot" name="Node::closeNodeSlot">
+<area shape="rect" id="node2" href="$class_node.html#aa0840c3cb5c7159be6d992adecd2097c" title="The destructor of the class Node. " alt="" coords="250,5,350,32"/>
+<area shape="rect" id="node3" href="$class_visualization_mono.html#a8afbdb9c3e21da4adba24df2505dcd59" title="Reset the visualization widgets. " alt="" coords="226,57,374,98"/>
+<area shape="rect" id="node4" href="$class_visualization_multi.html#aea0d9e2d3ebfc230a93fc3bb409d1394" title="Reset the visualization widgets. " alt="" coords="222,122,378,163"/>
+<area shape="rect" id="node5" href="$class_sensor_timer.html#a93201a76f088ef634b4ec52f2494d5ab" title="The slot function for closing node. " alt="" coords="205,188,395,215"/>
+<area shape="rect" id="node6" href="$class_simulator.html#a9fc5f1b7bf54acf796a5f0fcebacd5c6" title="Synchronize the timer track. " alt="" coords="201,239,399,265"/>
+<area shape="rect" id="node7" href="$class_simulator.html#a89a9f09a06a233045afd093f6af1ea2d" title="Reset the timer track. " alt="" coords="449,264,647,291"/>
+</map>

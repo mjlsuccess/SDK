@@ -1,0 +1,4 @@
+<map id="TriggerView::~TriggerView" name="TriggerView::~TriggerView">
+<area shape="rect" id="node2" href="$class_trigger_view.html#a4c036340d185953669286ae7432692f8" title="Slot function to receive trigger signal from Node. " alt="" coords="230,5,397,46"/>
+<area shape="rect" id="node3" href="$class_trigger_view.html#a1cafa80fac15c7a1210f7b62f3e38759" title="Slot function to draw monitor. " alt="" coords="238,71,389,97"/>
+</map>

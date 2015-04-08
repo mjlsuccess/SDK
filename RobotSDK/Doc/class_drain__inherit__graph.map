@@ -1,0 +1,12 @@
+<map id="Drain" name="Drain">
+<area shape="rect" id="node4" href="$class_drain_mono.html" title="DrainMono is derived from Drain. It can only process mono drain data. " alt="" coords="328,81,413,108"/>
+<area shape="rect" id="node8" href="$class_drain_multi.html" title="DrainMulti is derived from Drain. It can only process multi drain data. " alt="" coords="330,183,411,209"/>
+<area shape="rect" id="node2" href="$class_node.html" title="Class Node is the base for other modular node class in the data&#45;stream graph model. " alt="" coords="125,132,179,159"/>
+<area shape="rect" id="node3" href="$class_q_object.html" title="QObject in Qt. " alt="" coords="6,132,77,159"/>
+<area shape="rect" id="node5" href="$class_storage_mono.html" title="StorageMono stores mono drain data. " alt="" coords="476,5,575,32"/>
+<area shape="rect" id="node6" href="$class_transmitter_mono.html" title="TransmitterMono transmitter mono drain data. " alt="" coords="465,56,585,83"/>
+<area shape="rect" id="node7" href="$class_visualization_mono.html" title="VisualizationMono visualize mono drain data. " alt="" coords="461,107,589,133"/>
+<area shape="rect" id="node9" href="$class_storage_multi.html" title="StorageMulti stores multi drain data. " alt="" coords="478,157,573,184"/>
+<area shape="rect" id="node10" href="$class_transmitter_multi.html" title="TransmitterMulti transmitters multi drain data. " alt="" coords="467,208,583,235"/>
+<area shape="rect" id="node11" href="$class_visualization_multi.html" title="VisualizationMulti visualize multi drain data. " alt="" coords="463,259,587,285"/>
+</map>

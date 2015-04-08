@@ -1,0 +1,4 @@
+<map id="Node::connectExternalTrigger" name="Node::connectExternalTrigger">
+<area shape="rect" id="node2" href="$class_sensor_timer.html#a6f78e011d7a0796c829fa5d3103c01cb" title="Constructor of SensorTimer. " alt="" coords="248,5,427,32"/>
+<area shape="rect" id="node3" href="$class_sensor_external_event.html#a022af6365a783b19eb9b206552cba183" title="Constructor of SensorExternalEvent. " alt="" coords="261,57,414,98"/>
+</map>
