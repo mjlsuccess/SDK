@@ -23,6 +23,8 @@ bool DECOFUNC(setParamsVarsOpenNode)(QString qstrConfigName, QString qstrNodeTyp
     GetParamValue(xmlloader, vars, linear_index);
     GetParamValue(xmlloader, vars, angular_scale);
     GetParamValue(xmlloader, vars, linear_scale);
+    GetParamValue(xmlloader, vars, startsimple_index);
+    GetParamValue(xmlloader, vars, endsimple_index);
 
     if(vars->joysticksub == NULL)
     {
@@ -110,12 +112,17 @@ bool DECOFUNC(generateSourceData)(void * paramsPtr, void * varsPtr, void * outpu
 
     outputdata->angular_vel = -vars->angular_scale*msg->axes[vars->angular_index];
     outputdata->linear_vel = vars->linear_scale*msg->axes[vars->linear_index];
-//可视化部分
+    //可视化部分
     outputdata->back = outputdata->linear_vel <0 ? 1 : 0;
     outputdata->forward = outputdata->linear_vel >0 ? 1 : 0;
 
     outputdata->left = outputdata->angular_vel <0 ? 1 : 0;
     outputdata->right = outputdata->angular_vel >0 ? 1 : 0;
+    //数据采集指示
+
+    outputdata->startsimple = msg->buttons[vars->startsimple_index];
+    outputdata->endsimple = msg->buttons[vars->endsimple_index];
+
 	return 1;
 }
 

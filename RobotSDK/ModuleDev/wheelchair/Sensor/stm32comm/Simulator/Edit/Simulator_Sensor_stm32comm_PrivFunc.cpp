@@ -47,7 +47,7 @@ bool DECOFUNC(setParamsVarsOpenNode)(QString qstrConfigName, QString qstrNodeTyp
             >> OneComData.y
             >> OneComData.theta;
         //ÊäÈë Ÿø¶Ô×ø±ê£¬ºœÏòœÇ£¬ËÙ¶È£¬×ÜÀï³Ì
-        OneComData.qtimestamp = QTime::fromMSecsSinceStartOfDay(ltimestamp);
+        OneComData.timestamp = QTime::fromMSecsSinceStartOfDay(ltimestamp);
         //AllComDataÖÐµÄËùÓÐ³ÉÔ±ÊÇÃ¿Ò»Ê±¿ÌµÄÊýŸÝ
         vars->AllComData.push_back(OneComData);
     }
@@ -89,7 +89,7 @@ void DECOFUNC(initializeOutputData)(void * paramsPtr, void * varsPtr, boost::sha
 {
 	Simulator_Sensor_stm32comm_Params * params=(Simulator_Sensor_stm32comm_Params *)paramsPtr;
 	Simulator_Sensor_stm32comm_Vars * vars=(Simulator_Sensor_stm32comm_Vars *)varsPtr;
-    outputDataPtr=boost::shared_ptr<void>(new SourceDrainMono_Sensor_stm32comm_Data());
+	outputDataPtr=boost::shared_ptr<void>(new SourceDrainMono_Sensor_stm32comm_Data());
 	/*======Occasionally Program below/above======*/
 	/*
 	Function: initial output data.
@@ -102,7 +102,7 @@ bool DECOFUNC(generateSourceData)(void * paramsPtr, void * varsPtr, void * outpu
 {
 	Simulator_Sensor_stm32comm_Params * params=(Simulator_Sensor_stm32comm_Params *)paramsPtr;
 	Simulator_Sensor_stm32comm_Vars * vars=(Simulator_Sensor_stm32comm_Vars *)varsPtr;
-	Simulator_Sensor_stm32comm_Data * outputdata=(Simulator_Sensor_stm32comm_Data *)outputData;
+	SourceDrainMono_Sensor_stm32comm_Data * outputdata=(SourceDrainMono_Sensor_stm32comm_Data *)outputData;
 	outputPortIndex=QList<int>();
 	timeStamp=QTime();
 	/*======Please Program below======*/
@@ -112,7 +112,6 @@ bool DECOFUNC(generateSourceData)(void * paramsPtr, void * varsPtr, void * outpu
 	E.g. outputPortIndex=QList<int>()<<(outportindex1)<<(outportindex2)...
 	Step 3: set the timeStamp for Simulator.
 	*/
-
     if (vars->ComDataIndex >= vars->AllComData.size())
     {
         timeStamp = QTime();
@@ -120,7 +119,7 @@ bool DECOFUNC(generateSourceData)(void * paramsPtr, void * varsPtr, void * outpu
     }
 
     *outputdata = vars->AllComData[vars->ComDataIndex];
-    timeStamp = outputdata->qtimestamp;
+    timeStamp = outputdata->timestamp;
     vars->ComDataIndex ++;
 	return 1;
 }

@@ -106,15 +106,21 @@ bool DECOFUNC(processMonoDrainData)(void * paramsPtr, void * varsPtr, QVector<vo
 	Function: process draindata.
 	*/
     cv::Mat tmpimage;
-    for(int i=0; i<draindata.size(); i--)
-    {
-        int timestamp = ((draindata[i]->timestamp.hour()*60 + draindata[i]->timestamp.minute())*60 + draindata[i]->timestamp.second())*1000
-                    + draindata[i]->timestamp.msec();
-        vars->timestampwriter.write(QString("%1\n").arg(timestamp).toUtf8());
-        draindata[i]->cvimage.copyTo(tmpimage);
-        cv::cvtColor(tmpimage, tmpimage, CV_RGB2BGR);
-        vars->imagewriter.write(tmpimage);
-    }
+//    for(int i=0; i<draindata.size(); i++)
+//    {
+//        int timestamp = ((draindata[i]->timestamp.hour()*60 + draindata[i]->timestamp.minute())*60 + draindata[i]->timestamp.second())*1000
+//                    + draindata[i]->timestamp.msec();
+//        vars->timestampwriter.write(QString("%1\n").arg(timestamp).toUtf8());
+//        draindata[i]->cvimage.copyTo(tmpimage);
+//        cv::cvtColor(tmpimage, tmpimage, CV_RGB2BGR);
+//        vars->imagewriter.write(tmpimage);
+//    }
+    int timestamp = ((draindata.front()->timestamp.hour()*60 + draindata.front()->timestamp.minute())*60 + draindata.front()->timestamp.second())*1000
+                + draindata.front()->timestamp.msec();
+    vars->timestampwriter.write(QString("%1\n").arg(timestamp).toUtf8());
+    draindata.front()->cvimage.copyTo(tmpimage);
+    cv::cvtColor(tmpimage, tmpimage, CV_RGB2BGR);
+    vars->imagewriter.write(tmpimage);
 	return 1;
 }
 

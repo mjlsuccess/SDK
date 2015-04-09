@@ -1,9 +1,9 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#define MONITOR 0
+bool MONITOR = 0;
 bool storage = 1;
 int laserInterval = 30;
-int commInterval = 100;
+int commInterval = 80;
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -17,7 +17,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 
     SensorInternalEvent* joystick = new SensorInternalEvent(library, "Sensor_Joystick", "joystick", config);
-    joystick->setOutputNodesName(QList<QString>()<<"joystick_viewer;stm32comm");
+    joystick->setOutputNodesName(QList<QString>()<<"joystick_viewer;stm32comm;simplecollect");
 
 
     VisualizationMono* joystick_viewer = new VisualizationMono(library, "Sensor_Joystick", "joystick_viewer", config);
@@ -27,7 +27,7 @@ MainWindow::MainWindow(QWidget *parent) :
     //STM32 MCU
     SourceDrainMono* stm32comm = new SourceDrainMono(library, "Sensor_stm32comm", "stm32comm", config);
     stm32comm->setInputNodesName(QList<QString>()<<"joystick");
-    stm32comm->setOutputNodesName(QList<QString>()<<"stm32comm_viewer;stm32comm_storage");
+    stm32comm->setOutputNodesName(QList<QString>()<<"stm32comm_viewer;stm32comm_storage;doordetection;simplecollect");
     stm32comm->connectExternalTrigger(0, DRAINSLOT);
     //stm32comm->connectInternalTrigger(SOURCESLOT);
     stm32comm->connectExternalTrigger(&commSourceTimer, SIGNAL(timeout()), SOURCESLOT);
@@ -66,7 +66,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     //LLaser
     SensorTimer* l_laser = new SensorTimer(library, "Sensor_Laser", "l_laser", config,laserInterval);
-    l_laser->setOutputNodesName(QList<QString>()<<"l_laser_viewer;l_laser_storage");
+    l_laser->setOutputNodesName(QList<QString>()<<"l_laser_viewer;l_laser_storage;doordetection;simplecollect");
     l_laser->connectExternalTrigger(&laserTmer, SIGNAL(timeout()), SOURCESLOT);
 
     VisualizationMono* l_laser_viewer = new VisualizationMono(library, "Sensor_Laser", "l_laser_viewer", config);
@@ -90,6 +90,28 @@ MainWindow::MainWindow(QWidget *parent) :
     r_laser_storage->setInputNodesName(QList<QString>()<<"r_laser");
     r_laser_storage->connectExternalTrigger(0,DRAINSLOT);
 
+    //doordetection
+    ProcessorMulti* doordetection = new ProcessorMulti(library,"Processor_doordetection", "doordetection",config);
+    doordetection->setInputNodesName(QList<QString>()<<"l_laser"<<"stm32comm");
+    doordetection->setOutputNodesName(QList<QString>()<<"doordetection_viewer");
+    doordetection->connectExternalTrigger(1, PROCESSORSLOT);
+
+    VisualizationMono* doordetection_viewer = new VisualizationMono(library,"Processor_doordetection", "doordetection_viewer", config);
+    doordetection_viewer->setInputNodesName(QList<QString>()<<"doordetection");
+    doordetection_viewer->connectExternalTrigger(0,DRAINSLOT);
+
+    //simple collect
+    ProcessorMulti* simplecollect = new ProcessorMulti(library,"Processor_SimpleCollect", "simplecollect", config);
+    simplecollect->setInputNodesName(QList<QString>()<<"joystick"<<"l_laser"<<"stm32comm");
+    simplecollect->setOutputNodesName(QList<QString>()<<"simplecollect_viewer");
+    simplecollect->connectExternalTrigger(2, PROCESSORSLOT);
+
+    VisualizationMono* simplecollect_viewer = new VisualizationMono(library,"Processor_SimpleCollect", "simplecollect_viewer",config);
+    simplecollect_viewer->setInputNodesName(QList<QString>()<<"simplecollect");
+    simplecollect_viewer->connectExternalTrigger(0,DRAINSLOT);
+
+
+
     edge.addNode(joystick, 1, MONITOR);
     edge.addNode(joystick_viewer, 0, 0);
 
@@ -109,6 +131,12 @@ MainWindow::MainWindow(QWidget *parent) :
 
     edge.addNode(r_laser, 1, MONITOR);
     edge.addNode(r_laser_viewer, 0, 0);
+
+    edge.addNode(doordetection, 1, MONITOR);
+    edge.addNode(doordetection_viewer, 0, 0);
+
+    edge.addNode(simplecollect, 1, MONITOR);
+    edge.addNode(simplecollect_viewer, 0, 0);
 
 
     if(storage)
@@ -146,7 +174,14 @@ MainWindow::MainWindow(QWidget *parent) :
     widgets = r_laser_viewer->getVisualizationWidgets();
     ui->scrollArea_6->setWidget(widgets.front());
 
-   // ui->tabWidget->addTab(&edge, "Monitor");
+    widgets = doordetection_viewer->getVisualizationWidgets();
+    ui->scrollArea_7->setWidget(widgets.front());
+
+    widgets = simplecollect_viewer->getVisualizationWidgets();
+    ui->scrollArea_8->setWidget(widgets.front());
+
+    if(MONITOR)
+        ui->tabWidget->addTab(&edge, "Monitor");
 
 }
 

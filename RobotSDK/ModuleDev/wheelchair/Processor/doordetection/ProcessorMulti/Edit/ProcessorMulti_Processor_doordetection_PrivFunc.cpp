@@ -4,7 +4,6 @@
 
 //*******************Please add static libraries in .pro file*******************
 //e.g. unix:LIBS += ... or win32:LIBS += ...
-#define DEFINE_3 20//Õ€žñŸ«¶È£¬Ò»Ã×20žñ
 
 bool DECOFUNC(setParamsVarsOpenNode)(QString qstrConfigName, QString qstrNodeType, QString qstrNodeClass, QString qstrNodeName, void * paramsPtr, void * varsPtr)
 {
@@ -19,7 +18,17 @@ bool DECOFUNC(setParamsVarsOpenNode)(QString qstrConfigName, QString qstrNodeTyp
 	2: initialize variables (vars).
 	3: If everything is OK, return 1 for successful opening and vice versa.
 	*/
-	
+    GetParamValue(xmlloader, params, map_size);
+    GetParamValue(xmlloader, params, pixel_per_meter);
+
+    GetParamValue(xmlloader, params, mediapath);
+    GetParamValue(xmlloader, params, startmusicfilename);
+    GetParamValue(xmlloader, params, endmusicfilename);
+
+    vars->img = cv::Mat(params->map_size,params->map_size,CV_8UC3);
+    vars->img.setTo(cv::Scalar(0,0,0));
+
+    vars->isPlay = 0;
 	return 1;
 }
 
@@ -116,7 +125,7 @@ bool DECOFUNC(processMultiInputData)(void * paramsPtr, void * varsPtr, QVector<Q
     short steer = 0;
     short speed = 0;
     int URGDataSize = inputdata_0.front()->datasize;
-    short URGData[400];
+    short URGData[600];
     for (int i = 0; i < URGDataSize; i++)
         URGData[i] = inputdata_0.front()->data[i];
 
@@ -124,14 +133,15 @@ bool DECOFUNC(processMultiInputData)(void * paramsPtr, void * varsPtr, QVector<Q
     double IMUy = inputdata_1.front()->y;
     double IMUorientation = inputdata_1.front()->theta;
 
+    QTime timestamp = QTime::currentTime();
     //ŒÆËãÕÏ°­Îïµã×ø±ê
     outputdata->is_door_detected = 0;
     int knum = vars->current;
     for (int i = 0; i < URGDataSize; i++)
     {
         double temp_angle = IMUorientation + (double)i / 360 * vars->PI - vars->PI / 2;
-        vars->datatemp[knum][i][0] = (int)((IMUx-vars->IMUx_0 + cos(temp_angle)*URGData[i] / vars->unit) * DEFINE_3);//Ò»Ã×DEFINE_3žñ£¬³õÊŒÎ»ÖÃ£šDEFINE_4,DEFINE_4)
-        vars->datatemp[knum][i][1] = (int)((IMUy-vars->IMUy_0 + sin(temp_angle)*URGData[i] / vars->unit) * DEFINE_3);
+        vars->datatemp[knum][i][0] = (int)((IMUx-vars->IMUx_0 + cos(temp_angle)*URGData[i] / vars->unit) * params->pixel_per_meter);//Ò»Ã×DEFINE_3žñ£¬³õÊŒÎ»ÖÃ£šDEFINE_4,DEFINE_4)
+        vars->datatemp[knum][i][1] = (int)((IMUy-vars->IMUy_0 + sin(temp_angle)*URGData[i] / vars->unit) * params->pixel_per_meter);
     }
     vars->current++;
     if (vars->current == 1)//ÀÛŒÓ?ŽÎÊýŸÝ *************************************************   ÐÞžÄÕâÀï
@@ -155,7 +165,8 @@ bool DECOFUNC(processMultiInputData)(void * paramsPtr, void * varsPtr, QVector<Q
 
 
         //žùŸÝ×îÐÂµÄ10×éÊýŸÝ
-        vars->img = cv::Mat::zeros(SIZE_OF_GRID1,SIZE_OF_GRID1,CV_8UC1);
+        //vars->img = cv::Mat::zeros(params->map_size,params->map_size,CV_8UC1);
+        vars->img.setTo(cv::Scalar(0,0,0));
         for (int i = vars->current - 1; i >= 0; i--)
         {
             for (int j = 0; j < 361; j++)//
@@ -163,7 +174,9 @@ bool DECOFUNC(processMultiInputData)(void * paramsPtr, void * varsPtr, QVector<Q
                 tx = vars->datatemp[i][j][0];
                 ty = vars->datatemp[i][j][1];
                 if(tx < 490 && ty < 490 && tx > -490 && ty > -490)
-                    vars->img.at<unsigned char>(tx+(int)SIZE_OF_GRID1/2,ty+(int)SIZE_OF_GRID1/2) = 50;//ÇœÁÁ¶È********************ÐÞžÄÕâÀï
+                    cv::circle(vars->img, cv::Point(tx+params->map_size/2, ty+params->map_size/2),1,cv::Scalar(0,255,0), 1);
+                    //vars->img.at<cv::Vec3i>(tx+params->map_size/2,ty+params->map_size/2) = cv::Vec3i(0,255,0);
+                    //vars->img.at<unsigned char, 3>(tx+(int)params->map_size/2,ty+(int)params->map_size/2) = cv::Scalar(0,255,0);//ÇœÁÁ¶È********************ÐÞžÄÕâÀï
             }
 
             //for(int j = 30; j < 160; j++)//Ö»ÔÚÒ»¶šœÇ¶ÈÄÚŒì²âÒ»±ßµÄÃÅ ÔÝ¶š15¶È-80¶È*********************************  ÐÞžÄÕâÀï
@@ -183,7 +196,7 @@ bool DECOFUNC(processMultiInputData)(void * paramsPtr, void * varsPtr, QVector<Q
             //		tx = vars->datatemp[i][j][0];
             //		ty = vars->datatemp[i][j][1];
             //		if(tx < 490 && ty < 490 && tx > -490 && ty > -490)
-            //			vars->img.at<unsigned char>(tx+(int)SIZE_OF_GRID1/2,ty+(int)SIZE_OF_GRID1/2) = 250;
+            //			vars->img.at<unsigned char>(tx+(int)params->map_size/2,ty+(int)params->map_size/2) = 250;
             //	}
             //}
 
@@ -202,8 +215,11 @@ bool DECOFUNC(processMultiInputData)(void * paramsPtr, void * varsPtr, QVector<Q
                     if(tx < 490 && ty < 490 && tx > -490 && ty > -490)
                     {
                         //ÏìÒ»Éù
-                        vars->img.at<unsigned char>(tx+(int)SIZE_OF_GRID1/2,ty+(int)SIZE_OF_GRID1/2) = 250;	//ÃÅÐÎÎïÌåÁÁ¶È********************ÐÞžÄÕâÀï
+                        //vars->img.at<unsigned char>(tx+(int)params->map_size/2,ty+(int)params->map_size/2) = cv::Scalar(0,0,255);	//ÃÅÐÎÎïÌåÁÁ¶È********************ÐÞžÄÕâÀï
+                        cv::circle(vars->img, cv::Point(tx+params->map_size/2, ty+params->map_size/2),1,cv::Scalar(255,255,255), 1);
+                        //vars->img.at<cv::Vec3i>(tx+params->map_size/2,ty+params->map_size/2) = cv::Vec3i(255,0,0);
                         outputdata->is_door_detected = 1;
+
                     }
 
                 }
@@ -213,9 +229,34 @@ bool DECOFUNC(processMultiInputData)(void * paramsPtr, void * varsPtr, QVector<Q
         //»­³ögrid1
 //		cv::namedWindow("Test");      //ŽŽœšÒ»žöÃûÎªTestŽ°¿Ú
 //		cv::imshow("sw",vars->img);   //Ž°¿ÚÖÐÏÔÊŸÍŒÏñ
+        if(outputdata->is_door_detected == 1)
+        {
+            cv::putText(vars->img, "DOOR",cv::Point(40,40), 1, 1, cv::Scalar(255,0,0),2);
+        }
         vars->img.copyTo(outputdata->img2);
         vars->current = 0;
     }
+
+    if(outputdata->is_door_detected == 1)
+    {
+        QString filename = params->mediapath+"/"+params->startmusicfilename;
+        vars->mediaplayer.setMedia(QUrl::fromLocalFile(QFileInfo(filename).absoluteFilePath()));
+        vars->mediaplayer.play();
+        if(vars->mediaplayer.error()!= QMediaPlayer::NoError)
+                return 0;
+        vars->isPlay = 1;
+        vars->startplaytime = QTime::currentTime();
+    }
+    if(vars->isPlay == 1)
+    {
+        int timeduration = vars->startplaytime.msecsTo(timestamp);//QTime::currentTime().msecsTo(vars->startplaytime);
+        if(timeduration > 3000)
+        {
+            vars->isPlay = 0;
+            vars->mediaplayer.stop();
+        }
+    }
+
 
 
     //Ð¡³µ¿ØÖÆÃüÁî·¢ËÍ

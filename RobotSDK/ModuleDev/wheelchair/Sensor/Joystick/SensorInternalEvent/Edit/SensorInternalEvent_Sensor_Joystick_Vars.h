@@ -47,6 +47,8 @@ public:
 
         angular_index = linear_index = 0;
         angular_scale = linear_scale = 1.0;
+        startsimple_index = 3;
+        endsimple_index = 4;
 	}
 	/*! \fn ~SensorInternalEvent_Sensor_Joystick_Vars()
 		\brief The destructor of SensorInternalEvent_Sensor_Joystick_Vars. [required]
@@ -66,7 +68,7 @@ public:
     QString topic;
     ROSSub<sensor_msgs::JoyConstPtr> *joysticksub;
     double angular_scale, linear_scale;
-    int angular_index, linear_index;
+    int angular_index, linear_index, startsimple_index, endsimple_index;
 };
 
 /*! @}*/ 

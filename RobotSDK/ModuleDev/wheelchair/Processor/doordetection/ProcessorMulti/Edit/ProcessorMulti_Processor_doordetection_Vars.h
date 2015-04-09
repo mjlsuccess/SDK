@@ -4,7 +4,7 @@
 #define PROCESSORMULTI_PROCESSOR_DOORDETECTION_VARS_H
 
 #include<RobotSDK_Global.h>
-
+#include<QMediaPlayer>
 /*! \defgroup ProcessorMulti_Processor_doordetection_Vars ProcessorMulti_Processor_doordetection_Vars
 	\ingroup ProcessorMulti_Processor_doordetection
 	\brief ProcessorMulti_Processor_doordetection_Vars defines the Vars in ProcessorMulti_Processor_doordetection.
@@ -46,7 +46,7 @@ public:
         current = 0;
         IMUx_0 = 0;
         IMUy_0 = 0;
-        img = cv::Mat::zeros(SIZE_OF_GRID1,SIZE_OF_GRID1,CV_8UC1);
+        //img = cv::Mat::zeros(params->map_size,SIZE_OF_GRID1,CV_8UC1);
 	}
 	/*! \fn ~ProcessorMulti_Processor_doordetection_Vars()
 		\brief The destructor of ProcessorMulti_Processor_doordetection_Vars. [required]
@@ -59,13 +59,17 @@ public:
 	}
 public:
 	//*******************Please add variables below*******************
-    int datatemp[100][400][2];
+    int datatemp[100][600][2];
     cv::Mat img;
     double IMUx_0,IMUy_0;
     int unit;
     double PI;
     int tag;
     int current;
+
+    QMediaPlayer mediaplayer;
+    QTime startplaytime;
+    bool isPlay;
 };
 
 /*! @}*/ 

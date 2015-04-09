@@ -25,7 +25,7 @@ bool DECOFUNC(setParamsVarsOpenNode)(QString qstrConfigName, QString qstrNodeTyp
 
     vars->storagefile.open(filename);
 
-    vars->storagefile<<"x\ty\ttheta\tyaw\tleftodom\trightodom\n";
+    vars->storagefile<<"time\tx\ty\ttheta\tyaw\tleftodom\trightodom\n";
     return 1;
 }
 
@@ -90,8 +90,9 @@ bool DECOFUNC(processMonoDrainData)(void * paramsPtr, void * varsPtr, QVector<vo
 	*/
     SourceDrainMono_Sensor_stm32comm_Data *data = draindata.front();
     int time = ((data->timestamp.hour()*60 + data->timestamp.minute())*60  + data->timestamp.second()) *1000+data->timestamp.msec();
-
-    vars->storagefile<<time<<data->yaw<<'\t'<<data->leftodom<<'\t'<<data->rightodom<<'\t'<<data->x<<'\t'<<data->y<<'\t'<<data->theta<<'\t'<<std::endl;
+//vars->storagefile<<"time\tx\ty\ttheta\tyaw\tleftodom\trightodom\n";
+    vars->storagefile<<time<<'\t'<<data->x<<'\t'<<data->y<<'\t'<<data->theta<<'\t'<<data->yaw<<'\t'<<data->leftodom<<'\t'<<data->rightodom<<'\t'<<std::endl;
+   // vars->storagefile<<time<<'\t'<<data->x<<'\t'<<data->y<<'\t'<<data->theta;
 	return 1;
 }
 

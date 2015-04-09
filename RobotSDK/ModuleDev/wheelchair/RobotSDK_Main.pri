@@ -1,18 +1,18 @@
 INCLUDEPATH += .
 
 equals(INSTTYPE, "SDK") {
-    QT += core opengl widgets gui
+    QT += core opengl widgets gui multimedia
     TEMPLATE = lib
     CONFIG += qt staticlib
 }
 equals(INSTTYPE, "APP") {
-    QT += core opengl xml widgets gui
+    QT += core opengl xml widgets gui multimedia
     TEMPLATE = app
     CONFIG += qt
     DEFINES -= RobotSDK_ModuleDev
 }
 equals(INSTTYPE, "MOD") {
-    QT += core opengl xml widgets gui
+    QT += core opengl xml widgets gui multimedia
     TEMPLATE = lib
     CONFIG += qt
     DEFINES += RobotSDK_ModuleDev

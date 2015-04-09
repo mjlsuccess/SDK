@@ -85,12 +85,15 @@ bool DECOFUNC(processMonoDrainData)(void * paramsPtr, void * varsPtr, QVector<vo
 	*/
     cv::Mat tmpimg;
 
-    cv::cvtColor(draindata.front()->img2,tmpimg,CV_GRAY2BGR);
+//    cv::cvtColor(draindata.front()->img2,tmpimg,CV_GRAY2BGR);
+    draindata.front()->img2.copyTo(tmpimg);
 
+    int i = tmpimg.channels();
 
     QImage colorimg=QImage((const uchar*)(tmpimg.data),tmpimg.cols,tmpimg.rows, tmpimg.cols*tmpimg.channels(),QImage::Format_RGB888);
     vars->limage->setPixmap(QPixmap::fromImage(colorimg));
-	return 1;
+//    vars->limage->setPixmap(QPixmap::);
+    return 1;
 }
 
 void DECOFUNC(visualizationWidgets)(void * paramsPtr, void * varsPtr, QList<QWidget *> & widgets)

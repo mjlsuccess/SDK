@@ -191,6 +191,7 @@ bool DECOFUNC(generateSourceData)(void * paramsPtr, void * varsPtr, void * outpu
              //vars->deltatheta = (vars->deltaright-vars->deltaleft)/params->WheelBase;
              ////使用IMU计算角度
              vars->deltatheta = -(vars->yaw - vars->lastyaw)*vars->pi/1800.0;
+
              vars->lastyaw = vars->yaw;
 
              ///IMU角度范围是 0~360
@@ -211,7 +212,9 @@ bool DECOFUNC(generateSourceData)(void * paramsPtr, void * varsPtr, void * outpu
 
              outputdata->leftspeed = vars->leftspeed;
              outputdata->rightspeed = vars->rightspeed;
-
+             outputdata->x = vars->x;
+             outputdata->y = vars->y;
+             outputdata->theta = vars->theta;
              outputdata->yaw = vars->yaw;
              outputdata->timestamp = currenttime;
          }

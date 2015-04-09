@@ -93,6 +93,7 @@ public:
     double linear_vel;
     double angular_vel;
     bool forward, back, left, right;
+    bool startsimple, endsimple;
     QTime timestamp;
 };
 

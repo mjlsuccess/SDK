@@ -122,7 +122,8 @@ bool DECOFUNC(generateSourceData)(void * paramsPtr, void * varsPtr, void * outpu
         return 0;
     }
     int msec=(outputdata->cameraimage->header.stamp.sec)%(24*60*60)*1000+(outputdata->cameraimage->header.stamp.nsec)/1000000;
-    outputdata->timestamp=QTime::fromMSecsSinceStartOfDay(msec);
+    //outputdata->timestamp=QTime::fromMSecsSinceStartOfDay(msec);
+    outputdata->timestamp = QTime::currentTime();
     void * data=(void *)(outputdata->cameraimage->data.data());
     if(QString::fromStdString(outputdata->cameraimage->encoding)=="rgb8")
     {

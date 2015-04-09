@@ -19,7 +19,7 @@
 */
 
 //*******************Please add other headers below*******************
-#define SIZE_OF_GRID1 1000   //  ÁÙÊ±ÓÃ
+  //  ÁÙÊ±ÓÃ
 #include <opencv2/core/core.hpp>  //  ÁÙÊ±ÓÃ
 #include <opencv2/highgui/highgui.hpp>  //  ÁÙÊ±ÓÃ
 
@@ -56,7 +56,12 @@ public:
 	*/
 	ProcessorMulti_Processor_doordetection_Params() 
 	{
-		
+        map_size = 500;
+        pixel_per_meter = 20;
+        mediapath = QString("#(MediaPath)");
+
+        startmusicfilename = QString("startmusic.mp3");
+        endmusicfilename = QString("endmusic.mp3");
 	}
 	/*! \fn ~ProcessorMulti_Processor_doordetection_Params()
 		\brief The destructor of ProcessorMulti_Processor_doordetection_Params. [required]
@@ -69,7 +74,12 @@ public:
 	}
 public:
 	//*******************Please add variables below*******************
+    int map_size;
+    int pixel_per_meter;
 
+    QString mediapath;
+    QString startmusicfilename;
+    QString endmusicfilename;
 };
 
 //The Output Data is defined as below

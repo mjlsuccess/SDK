@@ -39,7 +39,7 @@ public:
 	*/
 	Simulator_Sensor_stm32comm_Vars() 
 	{
-        ComDataIndex = 0;
+		
 	}
 	/*! \fn ~Simulator_Sensor_stm32comm_Vars()
 		\brief The destructor of Simulator_Sensor_stm32comm_Vars. [required]
