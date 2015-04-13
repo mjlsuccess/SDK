@@ -45,7 +45,8 @@ public:
 	Simulator_Sensor_Camera_Params() 
 	{
         path=QString("#(DataPath)");
-        filename=QString("l.avi");
+        videofilename=QString("l.avi");
+        timestampfilename = QString("aa.log");
 	}
 	/*! \fn ~Simulator_Sensor_Camera_Params()
 		\brief The destructor of Simulator_Sensor_Camera_Params. [required]
@@ -59,7 +60,8 @@ public:
 public:
 	//*******************Please add variables below*******************
     QString path;
-    QString filename;
+    QString videofilename;
+    QString timestampfilename;
 };
 
 //The Output Data SensorInternalEvent_Sensor_Camera_Data is defined in the header below

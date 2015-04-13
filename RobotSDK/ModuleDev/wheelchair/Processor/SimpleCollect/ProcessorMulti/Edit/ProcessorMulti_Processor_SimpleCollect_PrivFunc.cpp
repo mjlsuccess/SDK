@@ -18,20 +18,11 @@ bool DECOFUNC(setParamsVarsOpenNode)(QString qstrConfigName, QString qstrNodeTyp
 	2: initialize variables (vars).
 	3: If everything is OK, return 1 for successful opening and vice versa.
 	*/
-
     GetParamValue(xmlloader, params, storagepath);
     GetParamValue(xmlloader, params, laserfilename);
     GetParamValue(xmlloader, params, odomfilename);
-
-//    GetParamValue(xmlloader, params, mediapath);
-//    GetParamValue(xmlloader, params, startmusicfilename);
-//    GetParamValue(xmlloader, params, endmusicfilename);
-
-    //vars->mediaplayer.setMedia(QUrl::fromLocalFile(params));
-
     vars->isSimple = 0;
     vars->isOpenFile = 1;
- //   vars->isPlay = 0;
 	return 1;
 }
 
@@ -76,6 +67,7 @@ void DECOFUNC(initializeOutputData)(void * paramsPtr, void * varsPtr, boost::sha
 	Function: initial output data.
 	You need to program here when you need to manually initialize output data.
 	*/
+	
 }
 
 void DECOFUNC(getMultiInputDataSize)(void * paramsPtr, void * varsPtr, QList<int> & inputDataSize)
@@ -95,9 +87,10 @@ void DECOFUNC(getMultiInputDataSize)(void * paramsPtr, void * varsPtr, QList<int
 	*/
 }
 
-//Input Port #0: Buffer_Size = 1, Params_Type = SensorInternalEvent_Sensor_Joystick_Params, Data_Type = SensorInternalEvent_Sensor_Joystick_Data
+//Input Port #0: Buffer_Size = 10, Params_Type = SensorInternalEvent_Sensor_Joystick_Params, Data_Type = SensorInternalEvent_Sensor_Joystick_Data
 //Input Port #1: Buffer_Size = 10, Params_Type = SensorTimer_Sensor_Laser_Params, Data_Type = SensorTimer_Sensor_Laser_Data
 //Input Port #2: Buffer_Size = 10, Params_Type = SourceDrainMono_Sensor_stm32comm_Params, Data_Type = SourceDrainMono_Sensor_stm32comm_Data
+//Input Port #3: Buffer_Size = 10, Params_Type = ProcessorMulti_Processor_doordetection_Params, Data_Type = ProcessorMulti_Processor_doordetection_Data
 bool DECOFUNC(processMultiInputData)(void * paramsPtr, void * varsPtr, QVector<QVector<void *> > inputParams, QVector<QVector<void *> > inputData, void * outputData, QList<int> & outputPortIndex)
 {
 	ProcessorMulti_Processor_SimpleCollect_Params * params=(ProcessorMulti_Processor_SimpleCollect_Params *)paramsPtr;
@@ -105,32 +98,37 @@ bool DECOFUNC(processMultiInputData)(void * paramsPtr, void * varsPtr, QVector<Q
 	QVector<SensorInternalEvent_Sensor_Joystick_Params *> inputparams_0; copyQVector(inputparams_0,inputParams[0]);
 	QVector<SensorTimer_Sensor_Laser_Params *> inputparams_1; copyQVector(inputparams_1,inputParams[1]);
 	QVector<SourceDrainMono_Sensor_stm32comm_Params *> inputparams_2; copyQVector(inputparams_2,inputParams[2]);
+	QVector<ProcessorMulti_Processor_doordetection_Params *> inputparams_3; copyQVector(inputparams_3,inputParams[3]);
 	QVector<SensorInternalEvent_Sensor_Joystick_Data *> inputdata_0; copyQVector(inputdata_0,inputData[0]);
 	QVector<SensorTimer_Sensor_Laser_Data *> inputdata_1; copyQVector(inputdata_1,inputData[1]);
 	QVector<SourceDrainMono_Sensor_stm32comm_Data *> inputdata_2; copyQVector(inputdata_2,inputData[2]);
+	QVector<ProcessorMulti_Processor_doordetection_Data *> inputdata_3; copyQVector(inputdata_3,inputData[3]);
 	ProcessorMulti_Processor_SimpleCollect_Data * outputdata=(ProcessorMulti_Processor_SimpleCollect_Data *)outputData;
 	outputPortIndex=QList<int>();
 	if(inputdata_0.size()==0){return 0;}
 	if(inputdata_1.size()==0){return 0;}
 	if(inputdata_2.size()==0){return 0;}
+	if(inputdata_3.size()==0){return 0;}
 	/*======Please Program below======*/
 	/*
 	Step 1: process inputdata_index, then store it into outputdata.
 	Step 2 [optional]: determine the outputPortIndex. (if not, outputdata will be sent by all ports)
 	E.g. outputPortIndex=QList<int>()<<(outportindex1)<<(outportindex2)...
-    */
+	*/
+	
     QTime timestamp = QTime::currentTime();
     if(inputdata_0.front()->startsimple == 1)
     {
         vars->isSimple = 1;
         if(vars->isOpenFile == 1)
         {
-            //open odom file
+            ///open odom file
             QString timestring = timestamp.toString("HHmmsszzz");
             QString filename = params->storagepath + "/" + timestring + ".odom";
             vars->odomfilewriter.open(filename.toStdString().data());
+            vars->odomfilewriter<<"door_x: "<<inputdata_3.front()->door_x<<'\t'<<"door_y: "<<inputdata_3.front()->door_y<<std::endl;
 
-            //open laser file
+            ///open laser file
             filename = params->storagepath + "/" + timestring + ".lms";
             vars->laserfilewriter.open(filename.toStdString().data());
             float angrng=(inputparams_1.front()->last_step-inputparams_1.front()->first_step)*0.25;
@@ -144,29 +142,10 @@ bool DECOFUNC(processMultiInputData)(void * paramsPtr, void * varsPtr, QVector<Q
 
             vars->isOpenFile = 0;
 
-            //open start music
-//            filename = params->mediapath+"/"+params->startmusicfilename;
-//            vars->mediaplayer.setMedia(QUrl::fromLocalFile(QFileInfo(filename).absoluteFilePath()));
-//            vars->mediaplayer.play();
-//            if(vars->mediaplayer.error()!= QMediaPlayer::NoError)
-//                    return 0;
-//            vars->isPlay = 1;
-//            vars->startplaytime = QTime::currentTime();
-
             outputdata->simplestatus = vars->status;
             return 1;
         }
     }
-
-//    if(vars->isPlay == 1)
-//    {
-//        int timeduration = vars->startplaytime.msecsTo(timestamp);//QTime::currentTime().msecsTo(vars->startplaytime);
-//        if(timeduration > 3000)
-//        {
-//            vars->isPlay = 0;
-//            vars->mediaplayer.stop();
-//        }
-//    }
 
     if(inputdata_0.front()->endsimple == 1)
     {
@@ -176,13 +155,6 @@ bool DECOFUNC(processMultiInputData)(void * paramsPtr, void * varsPtr, QVector<Q
         //close file
         vars->laserfilewriter.close();
         vars->odomfilewriter.close();
-
-        //open start music
-//        QString filename = params->mediapath+"/"+params->endmusicfilename;
-//        vars->mediaplayer.setMedia(QUrl::fromLocalFile(QFileInfo(filename).absoluteFilePath()));
-//        vars->mediaplayer.play();
-//        vars->isPlay = 1;
-//        vars->startplaytime = QTime::currentTime();
 
         outputdata->simplestatus = vars->status;
         return 1;
@@ -197,12 +169,11 @@ bool DECOFUNC(processMultiInputData)(void * paramsPtr, void * varsPtr, QVector<Q
            <<inputdata_2.front()->theta<<'\t'<<inputdata_2.front()->yaw
           <<'\t'<<inputdata_2.front()->leftodom<<'\t'<<inputdata_2.front()->rightodom<<std::endl;
 
-        vars->laserfilewriter.write((char *)&timestamp,sizeof(timestamp));
+        vars->laserfilewriter.write((char *)&time,sizeof(time));
         vars->laserfilewriter.write((char *)(inputdata_1.front()->data),sizeof(short)*(inputdata_1.front()->datasize));
 
-    //vars->storagefile<<time<<'\t'<<data->x<<'\t'<<data->y<<'\t'<<data->theta<<'\t'<<data->yaw<<'\t'<<data->leftodom<<'\t'<<data->rightodom<<'\t'<<std::endl;
     }
     outputdata->simplestatus = vars->status;
-	return 1;
+    return 1;
 }
 

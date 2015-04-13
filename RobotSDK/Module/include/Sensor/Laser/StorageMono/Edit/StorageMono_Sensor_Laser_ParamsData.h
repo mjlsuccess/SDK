@@ -31,9 +31,9 @@
 /*! \def StorageMono_Sensor_Laser_INPUTPORTSSIZE
 	\brief Defines input port(s) info: number=1
 	\details
-	- Input Port #0: Buffer_Size = 10, Params_Type = SensorTimer_Sensor_Laser_Params, Data_Type = SensorTimer_Sensor_Laser_Data
+    - Input Port #0: Buffer_Size = 0, Params_Type = SensorTimer_Sensor_Laser_Params, Data_Type = SensorTimer_Sensor_Laser_Data
 */
-#define StorageMono_Sensor_Laser_INPUTPORTSSIZE QList<int>()<<10
+#define StorageMono_Sensor_Laser_INPUTPORTSSIZE QList<int>()<<0
 
 //The Params is defined as below
 /*! \class StorageMono_Sensor_Laser_Params 

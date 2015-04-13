@@ -93,7 +93,7 @@ void DECOFUNC(getMonoDrainDataSize)(void * paramsPtr, void * varsPtr, int & drai
 	*/
 }
 
-//Input Port #0: Buffer_Size = 10, Params_Type = SensorInternalEvent_Sensor_Camera_Params, Data_Type = SensorInternalEvent_Sensor_Camera_Data
+//Input Port #0: Buffer_Size = 0, Params_Type = SensorInternalEvent_Sensor_Camera_Params, Data_Type = SensorInternalEvent_Sensor_Camera_Data
 bool DECOFUNC(processMonoDrainData)(void * paramsPtr, void * varsPtr, QVector<void *> drainParams, QVector<void *> drainData)
 {
 	StorageMono_Sensor_Camera_Params * params=(StorageMono_Sensor_Camera_Params *)paramsPtr;
@@ -105,22 +105,23 @@ bool DECOFUNC(processMonoDrainData)(void * paramsPtr, void * varsPtr, QVector<vo
 	/*
 	Function: process draindata.
 	*/
+    int i, n=draindata.size();
     cv::Mat tmpimage;
-//    for(int i=0; i<draindata.size(); i++)
-//    {
-//        int timestamp = ((draindata[i]->timestamp.hour()*60 + draindata[i]->timestamp.minute())*60 + draindata[i]->timestamp.second())*1000
-//                    + draindata[i]->timestamp.msec();
-//        vars->timestampwriter.write(QString("%1\n").arg(timestamp).toUtf8());
-//        draindata[i]->cvimage.copyTo(tmpimage);
-//        cv::cvtColor(tmpimage, tmpimage, CV_RGB2BGR);
-//        vars->imagewriter.write(tmpimage);
-//    }
-    int timestamp = ((draindata.front()->timestamp.hour()*60 + draindata.front()->timestamp.minute())*60 + draindata.front()->timestamp.second())*1000
-                + draindata.front()->timestamp.msec();
-    vars->timestampwriter.write(QString("%1\n").arg(timestamp).toUtf8());
-    draindata.front()->cvimage.copyTo(tmpimage);
-    cv::cvtColor(tmpimage, tmpimage, CV_RGB2BGR);
-    vars->imagewriter.write(tmpimage);
+    for(i=n-1; i>=0; i--)
+    {
+        int timestamp = ((draindata[i]->timestamp.hour()*60 + draindata[i]->timestamp.minute())*60 + draindata[i]->timestamp.second())*1000
+                    + draindata[i]->timestamp.msec();
+        vars->timestampwriter.write(QString("%1\n").arg(timestamp).toUtf8());
+        draindata[i]->cvimage.copyTo(tmpimage);
+        cv::cvtColor(tmpimage, tmpimage, CV_RGB2BGR);
+        vars->imagewriter.write(tmpimage);
+    }
+//    int timestamp = ((draindata.front()->timestamp.hour()*60 + draindata.front()->timestamp.minute())*60 + draindata.front()->timestamp.second())*1000
+//                + draindata.front()->timestamp.msec();
+//    vars->timestampwriter.write(QString("%1\n").arg(timestamp).toUtf8());
+//    draindata.front()->cvimage.copyTo(tmpimage);
+//    cv::cvtColor(tmpimage, tmpimage, CV_RGB2BGR);
+//    vars->imagewriter.write(tmpimage);
 	return 1;
 }
 

@@ -47,7 +47,7 @@ bool DECOFUNC(setParamsVarsOpenNode)(QString qstrConfigName, QString qstrNodeTyp
 
     vars->leftspeed = vars->rightspeed =0;
     vars->leftodom = vars->rightodom = 0;
-    vars->x = vars->y = vars->theta;
+    vars->x = vars->y = vars->theta = vars->yaw = 0;
     if(!(vars->serialport->open(QIODevice::ReadWrite)))
         return 0;
 	return 1;

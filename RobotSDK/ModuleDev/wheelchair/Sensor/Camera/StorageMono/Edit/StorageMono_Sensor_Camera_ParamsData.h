@@ -31,9 +31,9 @@
 /*! \def StorageMono_Sensor_Camera_INPUTPORTSSIZE
 	\brief Defines input port(s) info: number=1
 	\details
-	- Input Port #0: Buffer_Size = 10, Params_Type = SensorInternalEvent_Sensor_Camera_Params, Data_Type = SensorInternalEvent_Sensor_Camera_Data
+    - Input Port #0: Buffer_Size = 0, Params_Type = SensorInternalEvent_Sensor_Camera_Params, Data_Type = SensorInternalEvent_Sensor_Camera_Data
 */
-#define StorageMono_Sensor_Camera_INPUTPORTSSIZE QList<int>()<<10
+#define StorageMono_Sensor_Camera_INPUTPORTSSIZE QList<int>()<<0
 
 //The Params is defined as below
 /*! \class StorageMono_Sensor_Camera_Params 

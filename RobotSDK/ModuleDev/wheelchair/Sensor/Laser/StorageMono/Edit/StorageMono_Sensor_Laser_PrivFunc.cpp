@@ -81,7 +81,7 @@ void DECOFUNC(getMonoDrainDataSize)(void * paramsPtr, void * varsPtr, int & drai
 	*/
 }
 
-//Input Port #0: Buffer_Size = 10, Params_Type = SensorTimer_Sensor_Laser_Params, Data_Type = SensorTimer_Sensor_Laser_Data
+//Input Port #0: Buffer_Size = 0, Params_Type = SensorTimer_Sensor_Laser_Params, Data_Type = SensorTimer_Sensor_Laser_Data
 bool DECOFUNC(processMonoDrainData)(void * paramsPtr, void * varsPtr, QVector<void *> drainParams, QVector<void *> drainData)
 {
 	StorageMono_Sensor_Laser_Params * params=(StorageMono_Sensor_Laser_Params *)paramsPtr;
@@ -113,6 +113,11 @@ bool DECOFUNC(processMonoDrainData)(void * paramsPtr, void * varsPtr, QVector<vo
         vars->file.write((char *)&timestamp,sizeof(timestamp));
         vars->file.write((char *)(data->data),sizeof(short)*(data->datasize));
     }
+//    SensorTimer_Sensor_Laser_Data * data=(SensorTimer_Sensor_Laser_Data *)drainData.front();
+//    int timestamp=((data->qtimestamp.hour()*60+data->qtimestamp.minute())*60
+//        +data->qtimestamp.second())*1000+data->qtimestamp.msec();
+//    vars->file.write((char *)&timestamp,sizeof(timestamp));
+//    vars->file.write((char *)(data->data),sizeof(short)*(data->datasize));
 	return 1;
 }
 

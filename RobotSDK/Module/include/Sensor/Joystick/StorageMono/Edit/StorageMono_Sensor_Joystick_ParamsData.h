@@ -33,7 +33,7 @@
 	\details
 	- Input Port #0: Buffer_Size = 10, Params_Type = SensorInternalEvent_Sensor_Joystick_Params, Data_Type = SensorInternalEvent_Sensor_Joystick_Data
 */
-#define StorageMono_Sensor_Joystick_INPUTPORTSSIZE QList<int>()<<10
+#define StorageMono_Sensor_Joystick_INPUTPORTSSIZE QList<int>()<<0
 
 //The Params is defined as below
 /*! \class StorageMono_Sensor_Joystick_Params 

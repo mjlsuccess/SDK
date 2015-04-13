@@ -36,16 +36,18 @@ bool DECOFUNC(setParamsVarsOpenNode)(QString qstrConfigName, QString qstrNodeTyp
     vars->AllComData.clear();
 
     SourceDrainMono_Sensor_stm32comm_Data OneComData;
+    textstream.readLine();
     while (!textstream.atEnd())
     {
         int ltimestamp;
         textstream >> ltimestamp
-            >> OneComData.yaw
-            >> OneComData.leftodom
-            >> OneComData.rightodom
-            >> OneComData.x
-            >> OneComData.y
-            >> OneComData.theta;
+                >> OneComData.x
+                >> OneComData.y
+                >> OneComData.theta
+                >> OneComData.yaw
+                >> OneComData.leftodom
+                >> OneComData.rightodom;
+
         //ÊäÈë Ÿø¶Ô×ø±ê£¬ºœÏòœÇ£¬ËÙ¶È£¬×ÜÀï³Ì
         OneComData.timestamp = QTime::fromMSecsSinceStartOfDay(ltimestamp);
         //AllComDataÖÐµÄËùÓÐ³ÉÔ±ÊÇÃ¿Ò»Ê±¿ÌµÄÊýŸÝ

@@ -76,7 +76,7 @@ void DECOFUNC(getMonoDrainDataSize)(void * paramsPtr, void * varsPtr, int & drai
 	*/
 }
 
-//Input Port #0: Buffer_Size = 10, Params_Type = SourceDrainMono_Sensor_stm32comm_Params, Data_Type = SourceDrainMono_Sensor_stm32comm_Data
+//Input Port #0: Buffer_Size = 0, Params_Type = SourceDrainMono_Sensor_stm32comm_Params, Data_Type = SourceDrainMono_Sensor_stm32comm_Data
 bool DECOFUNC(processMonoDrainData)(void * paramsPtr, void * varsPtr, QVector<void *> drainParams, QVector<void *> drainData)
 {
 	StorageMono_Sensor_stm32comm_Params * params=(StorageMono_Sensor_stm32comm_Params *)paramsPtr;
@@ -88,11 +88,26 @@ bool DECOFUNC(processMonoDrainData)(void * paramsPtr, void * varsPtr, QVector<vo
 	/*
 	Function: process draindata.
 	*/
-    SourceDrainMono_Sensor_stm32comm_Data *data = draindata.front();
-    int time = ((data->timestamp.hour()*60 + data->timestamp.minute())*60  + data->timestamp.second()) *1000+data->timestamp.msec();
-//vars->storagefile<<"time\tx\ty\ttheta\tyaw\tleftodom\trightodom\n";
-    vars->storagefile<<time<<'\t'<<data->x<<'\t'<<data->y<<'\t'<<data->theta<<'\t'<<data->yaw<<'\t'<<data->leftodom<<'\t'<<data->rightodom<<'\t'<<std::endl;
-   // vars->storagefile<<time<<'\t'<<data->x<<'\t'<<data->y<<'\t'<<data->theta;
+//    SourceDrainMono_Sensor_stm32comm_Data *data = draindata.front();
+//    int time = ((data->timestamp.hour()*60 + data->timestamp.minute())*60  + data->timestamp.second()) *1000+data->timestamp.msec();
+//    vars->storagefile<<time<<'\t'<<data->x<<'\t'<<data->y<<'\t'<<data->theta<<'\t'<<data->yaw<<'\t'<<data->leftodom<<'\t'<<data->rightodom<<'\t'<<std::endl;
+    int i, n=draindata.size();
+//    for(i=0; i<n; i++)
+//    {
+//        SourceDrainMono_Sensor_stm32comm_Data *data = draindata[i];
+//        int time = ((data->timestamp.hour()*60 + data->timestamp.minute())*60  + data->timestamp.second()) *1000
+//                +data->timestamp.msec();
+//        vars->storagefile<<time<<'\t'<<data->x<<'\t'<<data->y<<'\t'<<data->theta<<'\t'
+//                        <<data->yaw<<'\t'<<data->leftodom<<'\t'<<data->rightodom<<'\t'<<std::endl;
+//    }
+    for(i=n-1; i>=0; i--)
+    {
+        SourceDrainMono_Sensor_stm32comm_Data *data = draindata[i];
+        int time = ((data->timestamp.hour()*60 + data->timestamp.minute())*60  + data->timestamp.second()) *1000
+                +data->timestamp.msec();
+        vars->storagefile<<time<<'\t'<<data->x<<'\t'<<data->y<<'\t'<<data->theta<<'\t'
+                        <<data->yaw<<'\t'<<data->leftodom<<'\t'<<data->rightodom<<'\t'<<std::endl;
+    }
 	return 1;
 }
 

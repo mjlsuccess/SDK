@@ -114,6 +114,7 @@ public:
     QByteArray datagram;
     cv::Mat img2;//***********
     bool is_door_detected;
+    double door_x,door_y;
 };
 
 /*! \def ProcessorMulti_Processor_doordetection_OUTPUTPORTSNUMBER

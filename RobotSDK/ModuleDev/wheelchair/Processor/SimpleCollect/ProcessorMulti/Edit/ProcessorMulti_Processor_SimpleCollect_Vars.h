@@ -20,10 +20,10 @@
 
 //*******************Please add other headers below*******************
 
-
-#include "ProcessorMulti_Processor_SimpleCollect_ParamsData.h"
 #include <fstream>
 #include <QMediaPlayer>
+#include "ProcessorMulti_Processor_SimpleCollect_ParamsData.h"
+
 //The Vars is defined as below
 /*! \class ProcessorMulti_Processor_SimpleCollect_Vars 
 	\brief The Vars of ProcessorMulti_Processor_SimpleCollect.
@@ -57,11 +57,6 @@ public:
     std::ofstream odomfilewriter;
     bool isSimple, isOpenFile;
     QString status;
-
-
-//    QMediaPlayer mediaplayer;
-//    QTime startplaytime;
-//    bool isPlay;
 };
 
 /*! @}*/ 

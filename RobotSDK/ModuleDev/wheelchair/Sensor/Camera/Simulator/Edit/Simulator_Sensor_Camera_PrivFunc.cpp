@@ -20,15 +20,17 @@ bool DECOFUNC(setParamsVarsOpenNode)(QString qstrConfigName, QString qstrNodeTyp
 	3: If everything is OK, return 1 for successful opening and vice versa.
 	*/
     GetParamValue(xmlloader,params,path);
-    GetParamValue(xmlloader,params,filename);
+    GetParamValue(xmlloader,params,videofilename);
+    GetParamValue(xmlloader,params,timestampfilename);
 
-    QString filename=QString("%1/%2").arg(params->path).arg(params->filename);
+    QString filename=QString("%1/%2").arg(params->path).arg(params->videofilename);
     vars->videosimu.open(filename.toStdString());
     if(!vars->videosimu.isOpened())
     {
         return 0;
     }
-    vars->timestampsimu.setFileName(QString("%1.log").arg(filename));
+    filename = QString("%1/%2").arg(params->path).arg(params->timestampfilename);
+    vars->timestampsimu.setFileName(filename);
     if(!vars->timestampsimu.open(QFile::ReadOnly | QFile::Text))
     {
         vars->videosimu.release();

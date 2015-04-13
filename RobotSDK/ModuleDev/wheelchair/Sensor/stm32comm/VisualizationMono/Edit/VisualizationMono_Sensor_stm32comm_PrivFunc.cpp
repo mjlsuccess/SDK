@@ -176,7 +176,7 @@ bool DECOFUNC(processMonoDrainData)(void * paramsPtr, void * varsPtr, QVector<vo
         cv::Point(0,60),CV_FONT_HERSHEY_SCRIPT_SIMPLEX,0.5,c_red,1,CV_AA);
     cv::putText(gridmap3,QString("leftodom: %1 m").arg(draindata.front()->leftodom).toStdString(),
         cv::Point(0,80),CV_FONT_HERSHEY_SCRIPT_SIMPLEX,0.5,c_red,1,CV_AA);
-    cv::putText(gridmap3,QString("rightodom: %1 m").arg(draindata.front()->rightodom).toStdString(),
+    cv::putText(gridmap3,QString("angle: %1 m").arg(draindata.front()->theta).toStdString(),
         cv::Point(0,100),CV_FONT_HERSHEY_SCRIPT_SIMPLEX,0.5,c_red,1,CV_AA);
     int timestamp=((draindata.front()->timestamp.hour()*60+draindata.front()->timestamp.minute())*60
             +draindata.front()->timestamp.second())*1000+draindata.front()->timestamp.msec();

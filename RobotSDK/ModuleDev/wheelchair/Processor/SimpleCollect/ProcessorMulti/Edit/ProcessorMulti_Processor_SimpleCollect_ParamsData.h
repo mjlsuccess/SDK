@@ -21,8 +21,10 @@
 //*******************Please add other headers below*******************
 
 
-//3 input data header(s) refered
+//4 input data header(s) refered
 
+//Defines Params ProcessorMulti_Processor_doordetection_Params and Input Data ProcessorMulti_Processor_doordetection_Data
+#include<wheelchair/Processor/doordetection/ProcessorMulti/Edit/ProcessorMulti_Processor_doordetection_ParamsData.h>
 //Defines Params SensorInternalEvent_Sensor_Joystick_Params and Input Data SensorInternalEvent_Sensor_Joystick_Data
 #include<wheelchair/Sensor/Joystick/SensorInternalEvent/Edit/SensorInternalEvent_Sensor_Joystick_ParamsData.h>
 //Defines Params SensorTimer_Sensor_Laser_Params and Input Data SensorTimer_Sensor_Laser_Data
@@ -33,13 +35,14 @@
 //0 new input data type(s) created
 
 /*! \def ProcessorMulti_Processor_SimpleCollect_INPUTPORTSSIZE
-	\brief Defines input port(s) info: number=3
+	\brief Defines input port(s) info: number=4
 	\details
-	- Input Port #0: Buffer_Size = 1, Params_Type = SensorInternalEvent_Sensor_Joystick_Params, Data_Type = SensorInternalEvent_Sensor_Joystick_Data
+	- Input Port #0: Buffer_Size = 10, Params_Type = SensorInternalEvent_Sensor_Joystick_Params, Data_Type = SensorInternalEvent_Sensor_Joystick_Data
 	- Input Port #1: Buffer_Size = 10, Params_Type = SensorTimer_Sensor_Laser_Params, Data_Type = SensorTimer_Sensor_Laser_Data
 	- Input Port #2: Buffer_Size = 10, Params_Type = SourceDrainMono_Sensor_stm32comm_Params, Data_Type = SourceDrainMono_Sensor_stm32comm_Data
+	- Input Port #3: Buffer_Size = 10, Params_Type = ProcessorMulti_Processor_doordetection_Params, Data_Type = ProcessorMulti_Processor_doordetection_Data
 */
-#define ProcessorMulti_Processor_SimpleCollect_INPUTPORTSSIZE QList<int>()<<1<<10<<10
+#define ProcessorMulti_Processor_SimpleCollect_INPUTPORTSSIZE QList<int>()<<10<<10<<10<<10
 
 //The Params is defined as below
 /*! \class ProcessorMulti_Processor_SimpleCollect_Params 
@@ -60,10 +63,6 @@ public:
         laserfilename=QString("$(CurTime).lms");
         odomfilename = QString("$(CurTime).lms");
         storagepath = QString("#(DataPath)");
-//        mediapath = QString("#(MediaPath)");
-
-//        startmusicfilename = QString("startmusic.mp3");
-//        endmusicfilename = QString("endmusic.mp3");
 	}
 	/*! \fn ~ProcessorMulti_Processor_SimpleCollect_Params()
 		\brief The destructor of ProcessorMulti_Processor_SimpleCollect_Params. [required]
@@ -72,7 +71,7 @@ public:
 	*/
 	~ProcessorMulti_Processor_SimpleCollect_Params() 
 	{
-		
+
 	}
 public:
 	//*******************Please add variables below*******************
@@ -80,10 +79,6 @@ public:
     QString laserfilename;
     //QString rlaserfilename;
     QString odomfilename;
-
-//    QString mediapath;
-//    QString startmusicfilename;
-//    QString endmusicfilename;
 };
 
 //The Output Data is defined as below
@@ -115,7 +110,7 @@ public:
 	}
 public:
 	//*******************Please add variables below*******************
-    QString simplestatus;
+QString simplestatus;
 };
 
 /*! \def ProcessorMulti_Processor_SimpleCollect_OUTPUTPORTSNUMBER

@@ -1,8 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-bool MONITOR = 0;
+bool MONITOR = 1;
 bool storage = 1;
-int laserInterval = 30;
+int laserInterval = 100;
 int commInterval = 80;
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -78,6 +78,7 @@ MainWindow::MainWindow(QWidget *parent) :
     l_laser_storage->connectExternalTrigger(0,DRAINSLOT);
 
     //RLaser
+
     SensorTimer* r_laser = new SensorTimer(library, "Sensor_Laser", "r_laser", config,laserInterval);
     r_laser->setOutputNodesName(QList<QString>()<<"r_laser_viewer;r_laser_storage");
     r_laser->connectExternalTrigger(&laserTmer, SIGNAL(timeout()), SOURCESLOT);
@@ -93,7 +94,7 @@ MainWindow::MainWindow(QWidget *parent) :
     //doordetection
     ProcessorMulti* doordetection = new ProcessorMulti(library,"Processor_doordetection", "doordetection",config);
     doordetection->setInputNodesName(QList<QString>()<<"l_laser"<<"stm32comm");
-    doordetection->setOutputNodesName(QList<QString>()<<"doordetection_viewer");
+    doordetection->setOutputNodesName(QList<QString>()<<"doordetection_viewer;simplecollect");
     doordetection->connectExternalTrigger(1, PROCESSORSLOT);
 
     VisualizationMono* doordetection_viewer = new VisualizationMono(library,"Processor_doordetection", "doordetection_viewer", config);
@@ -102,7 +103,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     //simple collect
     ProcessorMulti* simplecollect = new ProcessorMulti(library,"Processor_SimpleCollect", "simplecollect", config);
-    simplecollect->setInputNodesName(QList<QString>()<<"joystick"<<"l_laser"<<"stm32comm");
+    simplecollect->setInputNodesName(QList<QString>()<<"joystick"<<"l_laser"<<"stm32comm"<<"doordetection");
     simplecollect->setOutputNodesName(QList<QString>()<<"simplecollect_viewer");
     simplecollect->connectExternalTrigger(2, PROCESSORSLOT);
 
@@ -155,6 +156,14 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->start, SIGNAL(clicked()), this, SLOT(on_start_clicked()));
     connect(ui->stop, SIGNAL(clicked()), this, SLOT(on_stop_clicked()));
 
+    connect(this, SIGNAL(sig_timerstart()), l_laser, SLOT(startTimerSlot()));
+    connect(this, SIGNAL(sig_timerstop()), l_laser, SLOT(stopTimerSlot()));
+
+    connect(this, SIGNAL(sig_timerstart()), r_laser, SLOT(startTimerSlot()));
+    connect(this, SIGNAL(sig_timerstop()), r_laser, SLOT(stopTimerSlot()));
+
+
+
     QList<QWidget *> widgets;
     widgets = joystick_viewer->getVisualizationWidgets();
     ui->scrollArea->setWidget(widgets.front());
@@ -189,12 +198,14 @@ void MainWindow::on_start_clicked()
 {
     commSourceTimer.start();
     laserTmer.start();
+    emit sig_timerstart();
 }
 
 void MainWindow::on_stop_clicked()
 {
     commSourceTimer.stop();
     laserTmer.stop();
+    emit sig_timerstop();
 }
 
 MainWindow::~MainWindow()

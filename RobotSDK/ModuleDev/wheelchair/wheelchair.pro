@@ -2,17 +2,20 @@
     INCLUDEPATH += $$(HOME)/SDK/GLViewer/include
     INCLUDEPATH += $$(HOME)/SDK/serialport_lib/include
     INCLUDEPATH += $$(HOME)/SDK/serialport_lib/serialport/include
+    INCLUDEPATH += $$(HOME)/SDK/PathPlanning/include
 
     INCLUDEPATH +=/usr/local/include/urg_c/
-
+    INCLUDEPATH += /usr/include/eigen3
     CONFIG(debug, debug|release){
         LIBS += -L$$(HOME)/SDK/GLViewer/lib -lGLViewer_Debug
         LIBS += -L$$(HOME)/SDK/ROSInterface/lib/ -lROSInterface_Debug
         LIBS += -L$$(HOME)/SDK/serialport_lib/lib/ -lserialport_lib_Debug
+        LIBS += -L$$(HOME)/SDK/PathPlanning/lib/ -lPathPlanning
     }else{
         LIBS += -L$$(HOME)/SDK/GLViewer/lib -lGLViewer_Release
         LIBS += -L$$(HOME)/SDK/ROSInterface/lib/ -lROSInterface_Release
         LIBS += -L$$(HOME)/SDK/serialport_lib/lib/ -lserialport_lib_Release
+        LIBS += -L$$(HOME)/SDK/PathPlanning/lib/ -lPathPlanning
     }
 
     LIBS += -L/usr/lib/x86_64-linux-gnu -lopencv_core

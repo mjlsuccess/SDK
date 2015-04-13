@@ -23,11 +23,8 @@ public:
     QTimer commSourceTimer;
     QTimer laserTmer;
 signals:
-    void openSignal();
-    void closeSignal();
-    void startSignal();
-    void stopSignal();
-    void resetSignal();
+    void sig_timerstart();
+    void sig_timerstop();
 public slots:
 //    void on_open_clicked();
 //    void on_close_clicked();
