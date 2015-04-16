@@ -163,12 +163,15 @@ bool DECOFUNC(processMultiInputData)(void * paramsPtr, void * varsPtr, QVector<Q
     if(vars->isSimple)
     {
        //record data
-        int time = ((timestamp.hour()*60 + timestamp.minute())*60
-                    + timestamp.second()) *1000+timestamp.msec();
+        int time = ((inputdata_2.front()->timestamp.hour()*60 + inputdata_2.front()->timestamp.minute())*60
+                    + inputdata_2.front()->timestamp.second()) *1000+inputdata_2.front()->timestamp.msec();
+
         vars->odomfilewriter<<time<<'\t'<<inputdata_2.front()->x<<'\t'<<inputdata_2.front()->y<<'\t'
            <<inputdata_2.front()->theta<<'\t'<<inputdata_2.front()->yaw
           <<'\t'<<inputdata_2.front()->leftodom<<'\t'<<inputdata_2.front()->rightodom<<std::endl;
 
+        time = ((inputdata_1.front()->qtimestamp.hour()*60 + inputdata_1.front()->qtimestamp.minute())*60
+                            + inputdata_1.front()->qtimestamp.second()) *1000+inputdata_1.front()->qtimestamp.msec();
         vars->laserfilewriter.write((char *)&time,sizeof(time));
         vars->laserfilewriter.write((char *)(inputdata_1.front()->data),sizeof(short)*(inputdata_1.front()->datasize));
 

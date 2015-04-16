@@ -217,7 +217,7 @@ bool DECOFUNC(processMultiInputData)(void * paramsPtr, void * varsPtr, QVector<Q
             }
             if(outputdata->is_door_detected == 1)
             {
-                temp_angle = IMUorientation + (double)door_index_in_URGData / 360 * vars->PI - vars->PI / 2;
+                temp_angle = IMUorientation - (double)door_index_in_URGData / 360 * vars->PI + vars->PI / 2;
                 outputdata->door_x = IMUx + cos(temp_angle)*URGData[ door_index_in_URGData] / vars->unit;
                 outputdata->door_y = IMUy + sin(temp_angle)*URGData[ door_index_in_URGData] / vars->unit;
                 tx = vars->datatemp[i][door_index_in_URGData][0];

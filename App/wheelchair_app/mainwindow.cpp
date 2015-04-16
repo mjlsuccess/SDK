@@ -1,8 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-bool MONITOR = 1;
-bool storage = 1;
-int laserInterval = 100;
+bool MONITOR = 0;
+bool storage = 0;
+int laserInterval = 80;
 int commInterval = 80;
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
