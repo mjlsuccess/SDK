@@ -172,9 +172,17 @@ bool DECOFUNC(processMultiInputData)(void * paramsPtr, void * varsPtr, QVector<Q
 
         time = ((inputdata_1.front()->qtimestamp.hour()*60 + inputdata_1.front()->qtimestamp.minute())*60
                             + inputdata_1.front()->qtimestamp.second()) *1000+inputdata_1.front()->qtimestamp.msec();
-        vars->laserfilewriter.write((char *)&time,sizeof(time));
-        vars->laserfilewriter.write((char *)(inputdata_1.front()->data),sizeof(short)*(inputdata_1.front()->datasize));
 
+
+        vars->laserfilewriter.write((char *)&time,sizeof(time));
+
+        char lasertype = 'L';
+        vars->laserfilewriter.write((char *)&timestamp,sizeof(timestamp));
+        vars->laserfilewriter.write((char *)(inputdata_1.front()->ldata),sizeof(short)*(inputdata_1.front()->datasize));
+
+        lasertype = 'R';
+        vars->laserfilewriter.write((char *)&lasertype,sizeof(lasertype));
+        vars->laserfilewriter.write((char *)(inputdata_1.front()->rdata),sizeof(short)*(inputdata_1.front()->datasize));
     }
     outputdata->simplestatus = vars->status;
     return 1;

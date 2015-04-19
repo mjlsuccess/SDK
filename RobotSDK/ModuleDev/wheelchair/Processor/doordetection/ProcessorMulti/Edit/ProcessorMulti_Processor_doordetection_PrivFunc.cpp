@@ -131,7 +131,7 @@ bool DECOFUNC(processMultiInputData)(void * paramsPtr, void * varsPtr, QVector<Q
     int URGDataSize = inputdata_0.front()->datasize;
     short URGData[600];
     for (int i = 0; i < URGDataSize; i++)
-        URGData[i] = inputdata_0.front()->data[i];
+        URGData[i] = inputdata_0.front()->ldata[i];
 
     double IMUx = inputdata_1.front()->x;
     double IMUy = inputdata_1.front()->y;

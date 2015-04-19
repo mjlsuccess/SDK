@@ -59,8 +59,8 @@ public:
         frontonly=1;
         laserbeam=1;
         range = 2500;
-
-
+        calib_height = 60;
+        calib_width = 55;
 	}
 	/*! \fn ~VisualizationMono_Sensor_Laser_Params()
 		\brief The destructor of VisualizationMono_Sensor_Laser_Params. [required]
@@ -82,6 +82,8 @@ public:
     int imageradius;
     bool frontonly;
     bool laserbeam;
+    double calib_width; //单位cm
+    double calib_height;
 };
 
 //There is no Output Data.

@@ -19,7 +19,10 @@ bool DECOFUNC(setParamsVarsOpenNode)(QString qstrConfigName, QString qstrNodeTyp
 	3: If everything is OK, return 1 for successful opening and vice versa.
 	*/
     GetEnumParamValue(xmlloader,vars,connection_type);
-    GetParamValue(xmlloader,vars,device_or_address);
+    GetParamValue(xmlloader,vars,l_device_or_address);
+    GetParamValue(xmlloader,vars,llaser_on);
+    GetParamValue(xmlloader,vars,rlaser_on);
+    GetParamValue(xmlloader,vars,r_device_or_address);
     GetParamValue(xmlloader,vars,baudreate_or_port);
     GetEnumParamValue(xmlloader,vars,measurement_type);
     GetParamValue(xmlloader,vars,skip_scan);
@@ -30,13 +33,25 @@ bool DECOFUNC(setParamsVarsOpenNode)(QString qstrConfigName, QString qstrNodeTyp
     GetParamValue(xmlloader,params,farfilter);
     GetParamValue(xmlloader,params,unit);
 
-
-    int n=urg_open(&(vars->urg),vars->connection_type,vars->device_or_address.toUtf8().data(),vars->baudreate_or_port);
+    //left laser
+    int n=urg_open(&(vars->lurg),vars->connection_type,vars->l_device_or_address.toUtf8().data(),vars->baudreate_or_port);
     if(n<0)
     {
         return 0;
     }
-    n=urg_set_scanning_parameter(&(vars->urg),params->first_step,params->last_step,params->skip_step);
+    n=urg_set_scanning_parameter(&(vars->lurg),params->first_step,params->last_step,params->skip_step);
+    if(n<0)
+    {
+        return 0;
+    }
+
+    //right laser
+    n=urg_open(&(vars->rurg),vars->connection_type,vars->r_device_or_address.toUtf8().data(),vars->baudreate_or_port);
+    if(n<0)
+    {
+        return 0;
+    }
+    n=urg_set_scanning_parameter(&(vars->rurg),params->first_step,params->last_step,params->skip_step);
     if(n<0)
     {
         return 0;
@@ -56,7 +71,8 @@ bool DECOFUNC(handleVarsCloseNode)(void * paramsPtr, void * varsPtr)
 	1: handle/close variables (vars).
 	2: If everything is OK, return 1 for successful closing and vice versa.
 	*/
-    urg_close(&(vars->urg));
+    urg_close(&(vars->lurg));
+    urg_close(&(vars->rurg));
 	return 1;
 }
 
@@ -103,29 +119,66 @@ bool DECOFUNC(generateSourceData)(void * paramsPtr, void * varsPtr, void * outpu
 	Step 2 [optional]: determine the outputPortIndex. (if not, outputdata will be sent by all ports)
 	E.g. outputPortIndex=QList<int>()<<(outportindex1)<<(outportindex2)...
 	Step 3: set the timeStamp for Simulator.
-	*/
-    long * urgdata=new long[outputdata->datasize];
-    urg_start_measurement(&(vars->urg),vars->measurement_type,1,vars->skip_scan);
-    int n=urg_get_distance(&(vars->urg),urgdata,&(outputdata->timestamp));
+    */
+    outputdata->laserstatus = "OK";
     outputdata->qtimestamp=QTime::currentTime();
-    if(n<=0||n!=outputdata->datasize)
+    long * urgdata=new long[outputdata->datasize];
+//left laser data
+    if(vars->llaser_on)
     {
-        return 0;
-    }
-    int i;
-    for(i=0;i<n;i++)
-    {
-        short distance=short(urgdata[i]/10.0+0.5);
-        if(distance<params->nearfilter||distance>params->farfilter)
+        urg_start_measurement(&(vars->lurg),vars->measurement_type,1,vars->skip_scan);
+        int n=urg_get_distance(&(vars->lurg),urgdata,&(outputdata->timestamp));
+        int i;
+        if(n<=0||n!=outputdata->datasize)
         {
-            outputdata->data[i]=0;
+            for(i=0; i<outputdata->datasize; i++)
+                outputdata->ldata[i]=0;
+            outputdata->laserstatus = "L failed";
         }
         else
         {
-            outputdata->data[i]=distance;
+            for(i=0;i<n;i++)
+            {
+                short distance=short(urgdata[i]/10.0+0.5);
+                if(distance<params->nearfilter||distance>params->farfilter)
+                {
+                    outputdata->ldata[i]=0;
+                }
+                else
+                {
+                    outputdata->ldata[i]=distance;
+                }
+            }
         }
     }
-    return 1;
+//right laser data
+    if(vars->rlaser_on)
+    {
+        urg_start_measurement(&(vars->rurg),vars->measurement_type,1,vars->skip_scan);
+        int n=urg_get_distance(&(vars->rurg),urgdata,&(outputdata->timestamp));
+        int i;
+        if(n<=0||n!=outputdata->datasize)
+        {
+            for(i=0; i<outputdata->datasize; i++)
+                outputdata->rdata[i]=0;
+            outputdata->laserstatus = "R failed";
+        }
+        else
+        {
+            for(i=0;i<n;i++)
+            {
+                short distance=short(urgdata[i]/10.0+0.5);
+                if(distance<params->nearfilter||distance>params->farfilter)
+                {
+                    outputdata->rdata[i]=0;
+                }
+                else
+                {
+                    outputdata->rdata[i]=distance;
+                }
+            }
+        }
+    }
 	return 1;
 }
 

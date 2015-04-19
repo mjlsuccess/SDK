@@ -40,8 +40,10 @@ public:
 	SensorTimer_Sensor_Laser_Vars() 
 	{
         skip_scan=0;
+        llaser_on = rlaser_on = 1;
         connection_type=URG_SERIAL;
-        device_or_address="/dev/ttyACM0";
+        l_device_or_address= "/dev/ttyACM0";
+        r_device_or_address = "/dev/ttyACM1";
         baudreate_or_port=115200;
         measurement_type=URG_DISTANCE;
 	}
@@ -56,12 +58,15 @@ public:
 	}
 public:
 	//*******************Please add variables below*******************
+    bool llaser_on, rlaser_on;
     int skip_scan;
     urg_connection_type_t connection_type;
-    QString device_or_address;
+    QString l_device_or_address;
+    QString r_device_or_address;
     int baudreate_or_port;
     urg_measurement_type_t measurement_type;
-    urg_t urg;
+    urg_t lurg;
+    urg_t rurg;
 };
 
 /*! @}*/ 

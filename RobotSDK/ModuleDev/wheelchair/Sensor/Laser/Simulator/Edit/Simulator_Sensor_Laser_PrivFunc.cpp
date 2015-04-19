@@ -104,17 +104,39 @@ bool DECOFUNC(generateSourceData)(void * paramsPtr, void * varsPtr, void * outpu
     outputdata->timestamp = timestamp;
     outputdata->qtimestamp=QTime::fromMSecsSinceStartOfDay(outputdata->timestamp);
 
-    vars->file.read((char *)outputdata->data,sizeof(short)*(outputdata->datasize));
-
     int i,n=outputdata->datasize;
-
-    for(i=0;i<n;i++)
+    char lasertype;
+    vars->file.read((char *)lasertype,sizeof(char));
+    if(lasertype == 'L')
     {
-        if(outputdata->data[i]<params->nearfilter||outputdata->data[i]>params->farfilter)
+        vars->file.read((char *)outputdata->ldata,sizeof(short)*(outputdata->datasize));
+        for(i=0;i<n;i++)
         {
-            outputdata->data[i]=0;
+            if(outputdata->ldata[i]<params->nearfilter||outputdata->ldata[i]>params->farfilter)
+            {
+                outputdata->ldata[i]=0;
+            }
         }
     }
+    else
+        return 0;
+
+
+    vars->file.read((char *)lasertype,sizeof(char));
+    if(lasertype == 'R')
+    {
+        vars->file.read((char *)outputdata->rdata,sizeof(short)*(outputdata->datasize));
+        for(i=0;i<n;i++)
+        {
+            if(outputdata->rdata[i]<params->nearfilter||outputdata->rdata[i]>params->farfilter)
+            {
+                outputdata->rdata[i]=0;
+            }
+        }
+    }
+    else
+        return 0;
+
     timeStamp=outputdata->qtimestamp;
 	return 1;
 }

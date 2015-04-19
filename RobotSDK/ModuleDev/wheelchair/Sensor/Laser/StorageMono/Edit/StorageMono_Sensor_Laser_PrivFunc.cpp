@@ -20,8 +20,7 @@ bool DECOFUNC(setParamsVarsOpenNode)(QString qstrConfigName, QString qstrNodeTyp
 	*/
     GetParamValue(xmlloader,params,filename);
     GetParamValue(xmlloader,params,storagepath);
-    GetParamValue(xmlloader,params,LaserID);
-    QString filename=QString("%1/%2%3").arg(params->storagepath).arg(params->LaserID).arg(params->filename);
+    QString filename=QString("%1/%2").arg(params->storagepath).arg(params->filename);
     vars->file.setFileName(filename);
     if(vars->file.open(QFile::WriteOnly))
     {
@@ -110,8 +109,16 @@ bool DECOFUNC(processMonoDrainData)(void * paramsPtr, void * varsPtr, QVector<vo
         SensorTimer_Sensor_Laser_Data * data=(SensorTimer_Sensor_Laser_Data *)drainData[i];
         int timestamp=((data->qtimestamp.hour()*60+data->qtimestamp.minute())*60
             +data->qtimestamp.second())*1000+data->qtimestamp.msec();
+
+        char lasertype = 'L';
         vars->file.write((char *)&timestamp,sizeof(timestamp));
-        vars->file.write((char *)(data->data),sizeof(short)*(data->datasize));
+
+        vars->file.write((char *)&lasertype,sizeof(lasertype));
+        vars->file.write((char *)(data->ldata),sizeof(short)*(data->datasize));
+
+        lasertype = 'R';
+        vars->file.write((char *)&lasertype,sizeof(lasertype));
+        vars->file.write((char *)(data->rdata),sizeof(short)*(data->datasize));
     }
 //    SensorTimer_Sensor_Laser_Data * data=(SensorTimer_Sensor_Laser_Data *)drainData.front();
 //    int timestamp=((data->qtimestamp.hour()*60+data->qtimestamp.minute())*60

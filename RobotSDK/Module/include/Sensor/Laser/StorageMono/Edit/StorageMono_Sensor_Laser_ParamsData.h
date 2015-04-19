@@ -53,7 +53,7 @@ public:
 	{
         filename=QString("$(CurTime).lms");
         storagepath = QString("#(DataPath)");
-        LaserID = "L";
+
 	}
 	/*! \fn ~StorageMono_Sensor_Laser_Params()
 		\brief The destructor of StorageMono_Sensor_Laser_Params. [required]
@@ -68,7 +68,6 @@ public:
 	//*******************Please add variables below*******************
     QString filename;
     QString storagepath;
-    QString LaserID;
 };
 
 //There is no Output Data.

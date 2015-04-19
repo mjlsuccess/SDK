@@ -24,6 +24,9 @@ bool DECOFUNC(setParamsVarsOpenNode)(QString qstrConfigName, QString qstrNodeTyp
     GetParamValue(xmlloader,params,frontonly);
     GetParamValue(xmlloader,params,laserbeam);
 
+    GetParamValue(xmlloader,params,calib_width);
+    GetParamValue(xmlloader,params,calib_height);
+
     vars->beams->setText("Opened");
 	return 1;
 }
@@ -112,27 +115,60 @@ bool DECOFUNC(processMonoDrainData)(void * paramsPtr, void * varsPtr, QVector<vo
     QPen textpen(Qt::black);
     int i,n;
 
-    int centerx=params->imageradius;
-    int centery=params->imageradius;
-
     vars->painter.setPen(gridpen);
     vars->painter.setBrush(Qt::NoBrush);
     n=params->range/params->interval;
     int radiusstep=params->imageradius/n;
+    int centerx=params->imageradius;
+    int centery=params->imageradius;
     for(i=1;i<=n;i++)
     {
         int radius=i*radiusstep;
         vars->painter.drawEllipse(QPoint(centerx,centery),radius,radius);
     }
 
+    centerx=params->imageradius-params->calib_width/2;
+    centery=params->imageradius - params->calib_height;
+
+    vars->painter.setPen(centerpen);
+    vars->painter.setBrush(QBrush(Qt::red,Qt::SolidPattern));
+    vars->painter.drawEllipse(QPoint(centerx,centery),2,2);
+
     vars->painter.setPen(beampen);
     double ratio=double(params->imageradius)/double(params->range);
     n=draindata.front()->datasize;
+
     double pi=3.1415926535897932384626433832795/180.0;
+    //left laser visual
     for(i=0;i<n;i++)
     {
         double theta=(vars->startangle+vars->resolution*i)*pi;
-        double distance=ratio*(draindata.front()->data[i]);
+        double distance=ratio*(draindata.front()->ldata[i]);
+        int x=int(distance*cos(theta)+0.5);
+        int y=int(-distance*sin(theta)+0.5);
+        if(params->laserbeam)
+        {
+            vars->painter.drawLine(centerx,centery,x+centerx,y+centery);
+        }
+        else
+        {
+            vars->painter.drawEllipse(x+centerx,y+centery,2,2);
+        }
+    }
+    //right laser visual
+    centerx=params->imageradius + params->calib_width/2;
+    centery=params->imageradius - params->calib_height;
+
+    vars->painter.setPen(centerpen);
+    vars->painter.setBrush(QBrush(Qt::red,Qt::SolidPattern));
+    vars->painter.drawEllipse(QPoint(centerx,centery),2,2);
+
+
+    vars->painter.setPen(beampen);
+    for(i=0;i<n;i++)
+    {
+        double theta=(vars->startangle+vars->resolution*i)*pi;
+        double distance=ratio*(draindata.front()->rdata[i]);
         int x=int(distance*cos(theta)+0.5);
         int y=int(-distance*sin(theta)+0.5);
         if(params->laserbeam)
@@ -151,10 +187,6 @@ bool DECOFUNC(processMonoDrainData)(void * paramsPtr, void * varsPtr, QVector<vo
     vars->painter.drawText(0,height,QString("Interval = %1 cm").arg(params->interval));
     vars->painter.drawText(0,height*2,QString("System Time: %1").arg(draindata.front()->qtimestamp.toString("HH:mm:ss:zzz")));
     vars->painter.drawText(0,height*3,QString("URG Time: %1").arg(draindata.front()->timestamp));
-
-    vars->painter.setPen(centerpen);
-    vars->painter.setBrush(QBrush(Qt::red,Qt::SolidPattern));
-    vars->painter.drawEllipse(QPoint(centerx,centery),2,2);
 
     vars->painter.end();
     vars->beams->setPixmap(QPixmap::fromImage(image));

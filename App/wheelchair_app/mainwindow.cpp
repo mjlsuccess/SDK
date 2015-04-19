@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 bool MONITOR = 0;
-bool storage = 0;
+bool storage = 1;
 int laserInterval = 80;
 int commInterval = 80;
 MainWindow::MainWindow(QWidget *parent) :
@@ -65,35 +65,35 @@ MainWindow::MainWindow(QWidget *parent) :
     r_camera_storage->connectExternalTrigger(0, DRAINSLOT);
 
     //LLaser
-    SensorTimer* l_laser = new SensorTimer(library, "Sensor_Laser", "l_laser", config,laserInterval);
-    l_laser->setOutputNodesName(QList<QString>()<<"l_laser_viewer;l_laser_storage;doordetection;simplecollect");
-    l_laser->connectExternalTrigger(&laserTmer, SIGNAL(timeout()), SOURCESLOT);
+    SensorTimer* laser = new SensorTimer(library, "Sensor_Laser", "laser", config,laserInterval);
+    laser->setOutputNodesName(QList<QString>()<<"laser_viewer;laser_storage;doordetection;simplecollect");
+    laser->connectExternalTrigger(&laserTmer, SIGNAL(timeout()), SOURCESLOT);
 
-    VisualizationMono* l_laser_viewer = new VisualizationMono(library, "Sensor_Laser", "l_laser_viewer", config);
-    l_laser_viewer->setInputNodesName(QList<QString>()<<"l_laser");
-    l_laser_viewer->connectExternalTrigger(0, DRAINSLOT);
+    VisualizationMono* laser_viewer = new VisualizationMono(library, "Sensor_Laser", "laser_viewer", config);
+    laser_viewer->setInputNodesName(QList<QString>()<<"laser");
+    laser_viewer->connectExternalTrigger(0, DRAINSLOT);
 
-    StorageMono* l_laser_storage = new StorageMono(library, "Sensor_Laser", "l_laser_storage", config);
-    l_laser_storage->setInputNodesName(QList<QString>()<<"l_laser");
-    l_laser_storage->connectExternalTrigger(0,DRAINSLOT);
+    StorageMono* laser_storage = new StorageMono(library, "Sensor_Laser", "laser_storage", config);
+    laser_storage->setInputNodesName(QList<QString>()<<"laser");
+    laser_storage->connectExternalTrigger(0,DRAINSLOT);
 
-    //RLaser
+//    //RLaser
 
-    SensorTimer* r_laser = new SensorTimer(library, "Sensor_Laser", "r_laser", config,laserInterval);
-    r_laser->setOutputNodesName(QList<QString>()<<"r_laser_viewer;r_laser_storage");
-    r_laser->connectExternalTrigger(&laserTmer, SIGNAL(timeout()), SOURCESLOT);
+//    SensorTimer* r_laser = new SensorTimer(library, "Sensor_Laser", "r_laser", config,laserInterval);
+//    r_laser->setOutputNodesName(QList<QString>()<<"r_laser_viewer;r_laser_storage");
+//    r_laser->connectExternalTrigger(&laserTmer, SIGNAL(timeout()), SOURCESLOT);
 
-    VisualizationMono* r_laser_viewer = new VisualizationMono(library, "Sensor_Laser", "r_laser_viewer", config);
-    r_laser_viewer->setInputNodesName(QList<QString>()<<"r_laser");
-    r_laser_viewer->connectExternalTrigger(0, DRAINSLOT);
+//    VisualizationMono* r_laser_viewer = new VisualizationMono(library, "Sensor_Laser", "r_laser_viewer", config);
+//    r_laser_viewer->setInputNodesName(QList<QString>()<<"r_laser");
+//    r_laser_viewer->connectExternalTrigger(0, DRAINSLOT);
 
-    StorageMono* r_laser_storage = new StorageMono(library, "Sensor_Laser", "r_laser_storage", config);
-    r_laser_storage->setInputNodesName(QList<QString>()<<"r_laser");
-    r_laser_storage->connectExternalTrigger(0,DRAINSLOT);
+//    StorageMono* r_laser_storage = new StorageMono(library, "Sensor_Laser", "r_laser_storage", config);
+//    r_laser_storage->setInputNodesName(QList<QString>()<<"r_laser");
+//    r_laser_storage->connectExternalTrigger(0,DRAINSLOT);
 
     //doordetection
     ProcessorMulti* doordetection = new ProcessorMulti(library,"Processor_doordetection", "doordetection",config);
-    doordetection->setInputNodesName(QList<QString>()<<"l_laser"<<"stm32comm");
+    doordetection->setInputNodesName(QList<QString>()<<"laser"<<"stm32comm");
     doordetection->setOutputNodesName(QList<QString>()<<"doordetection_viewer;simplecollect");
     doordetection->connectExternalTrigger(1, PROCESSORSLOT);
 
@@ -103,7 +103,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     //simple collect
     ProcessorMulti* simplecollect = new ProcessorMulti(library,"Processor_SimpleCollect", "simplecollect", config);
-    simplecollect->setInputNodesName(QList<QString>()<<"joystick"<<"l_laser"<<"stm32comm"<<"doordetection");
+    simplecollect->setInputNodesName(QList<QString>()<<"joystick"<<"laser"<<"stm32comm"<<"doordetection");
     simplecollect->setOutputNodesName(QList<QString>()<<"simplecollect_viewer");
     simplecollect->connectExternalTrigger(2, PROCESSORSLOT);
 
@@ -127,11 +127,9 @@ MainWindow::MainWindow(QWidget *parent) :
     edge.addNode(r_camera_viewer, 0, 0);
 
 
-    edge.addNode(l_laser, 1, MONITOR);
-    edge.addNode(l_laser_viewer, 0, 0);
+    edge.addNode(laser, 1, MONITOR);
+    edge.addNode(laser_viewer, 0, 0);
 
-    edge.addNode(r_laser, 1, MONITOR);
-    edge.addNode(r_laser_viewer, 0, 0);
 
     edge.addNode(doordetection, 1, MONITOR);
     edge.addNode(doordetection_viewer, 0, 0);
@@ -145,8 +143,7 @@ MainWindow::MainWindow(QWidget *parent) :
         edge.addNode(stm32comm_storage, 1, 0);
         edge.addNode(l_camera_storage, 1, 0);
         edge.addNode(r_camera_storage, 1, 0);
-        edge.addNode(l_laser_storage, 1, 0);
-        edge.addNode(r_laser_storage, 1, 0);
+        edge.addNode(laser_storage, 1, 0);
     }
 
     edge.connectAll();
@@ -156,11 +153,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->start, SIGNAL(clicked()), this, SLOT(on_start_clicked()));
     connect(ui->stop, SIGNAL(clicked()), this, SLOT(on_stop_clicked()));
 
-    connect(this, SIGNAL(sig_timerstart()), l_laser, SLOT(startTimerSlot()));
-    connect(this, SIGNAL(sig_timerstop()), l_laser, SLOT(stopTimerSlot()));
-
-    connect(this, SIGNAL(sig_timerstart()), r_laser, SLOT(startTimerSlot()));
-    connect(this, SIGNAL(sig_timerstop()), r_laser, SLOT(stopTimerSlot()));
+    connect(this, SIGNAL(sig_timerstart()), laser, SLOT(startTimerSlot()));
+    connect(this, SIGNAL(sig_timerstop()), laser, SLOT(stopTimerSlot()));
 
 
 
@@ -177,11 +171,8 @@ MainWindow::MainWindow(QWidget *parent) :
     widgets = r_camera_viewer->getVisualizationWidgets();
     ui->scrollArea_4->setWidget(widgets.front());
 
-    widgets = l_laser_viewer->getVisualizationWidgets();
+    widgets = laser_viewer->getVisualizationWidgets();
     ui->scrollArea_5->setWidget(widgets.front());
-
-    widgets = r_laser_viewer->getVisualizationWidgets();
-    ui->scrollArea_6->setWidget(widgets.front());
 
     widgets = doordetection_viewer->getVisualizationWidgets();
     ui->scrollArea_7->setWidget(widgets.front());

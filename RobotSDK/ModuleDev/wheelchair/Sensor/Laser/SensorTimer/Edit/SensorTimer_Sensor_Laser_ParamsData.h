@@ -90,11 +90,13 @@ public:
         datasize=dataSize;
         if(datasize>0)
         {
-            data=new short[dataSize];
+            ldata=new short[dataSize];
+            rdata=new short[dataSize];
         }
         else
         {
-            data=NULL;
+            ldata=NULL;
+            rdata=NULL;
         }
 	}
 	/*! \fn ~SensorTimer_Sensor_Laser_Data()
@@ -104,18 +106,25 @@ public:
 	*/
 	~SensorTimer_Sensor_Laser_Data() 
 	{
-        if(data!=NULL)
+        if(ldata!=NULL)
         {
-            delete []data;
-            data=NULL;
+            delete []ldata;
+            ldata=NULL;
+        }
+        if(rdata!=NULL)
+        {
+            delete []rdata;
+            rdata=NULL;
         }
 	}
 public:
 	//*******************Please add variables below*******************
+    QString laserstatus;
     long timestamp;
     QTime qtimestamp;
     int datasize;
-    short * data;
+    short * ldata;
+    short * rdata;
 };
 
 /*! \def SensorTimer_Sensor_Laser_OUTPUTPORTSNUMBER
