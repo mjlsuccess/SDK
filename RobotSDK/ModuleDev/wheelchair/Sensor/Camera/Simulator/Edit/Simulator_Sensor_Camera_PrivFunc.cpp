@@ -100,12 +100,14 @@ bool DECOFUNC(generateSourceData)(void * paramsPtr, void * varsPtr, void * outpu
 	E.g. outputPortIndex=QList<int>()<<(outportindex1)<<(outportindex2)...
 	Step 3: set the timeStamp for Simulator.
 	*/
-    if(!vars->videosimu.read(outputdata->cvimage) ||
+    cv::Mat temp;
+    if(!vars->videosimu.read(temp) ||
             vars->textstream.atEnd())
     {
         timeStamp=QTime();
         return 0;
     }
+    cv::cvtColor(temp, outputdata->cvimage, CV_BGR2RGB);
     timeStamp=QTime::fromMSecsSinceStartOfDay(vars->textstream.readLine().toInt());
     outputdata->timestamp = timeStamp;
 

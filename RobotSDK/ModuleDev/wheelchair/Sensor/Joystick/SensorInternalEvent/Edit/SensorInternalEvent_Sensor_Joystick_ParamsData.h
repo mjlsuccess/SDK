@@ -78,6 +78,7 @@ public:
 	{
         linear_vel = angular_vel = 0;
         forward = back = left = right = 0;
+        manual_control = 1;
 	}
 	/*! \fn ~SensorInternalEvent_Sensor_Joystick_Data()
 		\brief The destructor of SensorInternalEvent_Sensor_Joystick_Data. [required]
@@ -94,6 +95,7 @@ public:
     double angular_vel;
     bool forward, back, left, right;
     bool startsimple, endsimple;
+    bool manual_control;
     QTime timestamp;
 };
 

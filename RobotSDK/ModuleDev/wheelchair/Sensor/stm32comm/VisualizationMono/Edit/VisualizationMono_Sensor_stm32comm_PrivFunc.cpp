@@ -170,13 +170,13 @@ bool DECOFUNC(processMonoDrainData)(void * paramsPtr, void * varsPtr, QVector<vo
 
     cv::putText(gridmap3,QString("(%1, %2)").arg(draindata.front()->x).arg(draindata.front()->y).toStdString(),
         cv::Point(0,20),CV_FONT_HERSHEY_SCRIPT_SIMPLEX,0.5,c_red,1,CV_AA);
-    cv::putText(gridmap3,QString("leftspeed: %1 m/s").arg(draindata.front()->leftspeed).toStdString(),
+    cv::putText(gridmap3,QString("leftspeed: %1 m/s").arg(draindata.front()->theta).toStdString(),
         cv::Point(0,40),CV_FONT_HERSHEY_SCRIPT_SIMPLEX,0.5,c_red,1,CV_AA);
-    cv::putText(gridmap3,QString("rightspeed: %1 m/s").arg(draindata.front()->rightspeed).toStdString(),
+    cv::putText(gridmap3,QString("rightspeed: %1 m").arg(draindata.front()->rightodom).toStdString(),
         cv::Point(0,60),CV_FONT_HERSHEY_SCRIPT_SIMPLEX,0.5,c_red,1,CV_AA);
     cv::putText(gridmap3,QString("leftodom: %1 m").arg(draindata.front()->leftodom).toStdString(),
         cv::Point(0,80),CV_FONT_HERSHEY_SCRIPT_SIMPLEX,0.5,c_red,1,CV_AA);
-    cv::putText(gridmap3,QString("angle: %1 m").arg(draindata.front()->theta).toStdString(),
+    cv::putText(gridmap3,QString("angle: %1 deg").arg(draindata.front()->theta).toStdString(),
         cv::Point(0,100),CV_FONT_HERSHEY_SCRIPT_SIMPLEX,0.5,c_red,1,CV_AA);
     int timestamp=((draindata.front()->timestamp.hour()*60+draindata.front()->timestamp.minute())*60
             +draindata.front()->timestamp.second())*1000+draindata.front()->timestamp.msec();

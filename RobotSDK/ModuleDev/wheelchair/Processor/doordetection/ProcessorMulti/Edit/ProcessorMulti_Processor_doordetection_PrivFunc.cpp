@@ -173,7 +173,8 @@ bool DECOFUNC(processMultiInputData)(void * paramsPtr, void * varsPtr, QVector<Q
 
 
         //žùŸÝ×îÐÂµÄ10×éÊýŸÝ
-        //vars->img = cv::Mat::zeros(params->map_size,params->map_size,CV_8UC1);        
+  //      vars->img_hough.create(params->map_size,params->map_size,CV_8UC1);
+        vars->img_hough = cv::Mat::zeros(params->map_size,params->map_size,CV_8UC1);
         vars->img.setTo(cv::Scalar(0,0,0));
         for (int i = vars->current - 1; i >= 0; i--)
         {
@@ -181,25 +182,59 @@ bool DECOFUNC(processMultiInputData)(void * paramsPtr, void * varsPtr, QVector<Q
             {
                 tx = vars->datatemp[i][j][0];
                 ty = vars->datatemp[i][j][1];
-                if(tx < 490 && ty < 490 && tx > -490 && ty > -490)
+                if(tx < params->map_size/2-1&& ty < params->map_size/2-1 && tx > -params->map_size/2+1 && ty > -params->map_size/2+1)
+                {
                     cv::circle(vars->img, cv::Point(tx+params->map_size/2, ty+params->map_size/2),1,cv::Scalar(0,255,0), 1);
                     //vars->img.at<cv::Vec3i>(tx+params->map_size/2,ty+params->map_size/2) = cv::Vec3i(0,255,0);
                     //vars->img.at<unsigned char, 3>(tx+(int)params->map_size/2,ty+(int)params->map_size/2) = cv::Scalar(0,255,0);//ÇœÁÁ¶È********************ÐÞžÄÕâÀï
+                 if(j < 131)
+                    {
+                    vars->img_hough.at<unsigned char>(tx+(int)params->map_size/2,ty+(int)params->map_size/2) = 1;
+                    }
+                }
             }
+            float theta;
+            float rho;
+            theta = 0;
+            rho = params->map_size/2;
+
+            //jia ru zhe duan keneng hui ka
+            cv::vector<cv::Vec2f> lines;//hough
+            cv::HoughLines(vars->img_hough,lines,1, CV_PI/720,10);
+            if(!lines.empty())
+            {
+            rho = lines[0][0];
+            theta = lines[0][1];
+            }
+             cv::Point pt1,pt2;
+             double a=cos(theta);
+             double b=sin(theta);
+             double x0 = rho*a;
+             double y0 = rho*b;
+             pt1.y = cvRound(x0+1000*(-b));
+             pt1.x = cvRound(y0+1000*a);
+             pt2.y = cvRound(x0-1000*(-b));
+             pt2.x = cvRound(y0-1000*a);
+             cv::line(vars->img, pt1, pt2, cv::Scalar(0,0,255), 1);
+            //
+             dist_mid = fabs(cos(theta)*params->map_size/2 + sin(theta)*(int)params->map_size/2 - rho) / params->pixel_per_meter;
 
             for(int j = 1; j < 131; j++)//Ö»ÔÚÒ»¶šœÇ¶ÈÄÚŒì²âÇœÃæ ÔÝ¶š1¶È - 65¶È*********************************  ÐÞžÄÕâÀï
             {
-                dist_to_wall[i][j] = (double)URGData[j] * cos((double)j/360*vars->PI);
+ //               dist_to_wall[i][j] = fabs((double)URGData[j] * cos((double)j/360*vars->PI + theta)/vars->unit);
+                tx = vars->datatemp[i][j][0];
+                ty = vars->datatemp[i][j][1];
+                dist_to_wall[i][j] = (rho-cos(theta)*(params->map_size/2+ty)-sin(theta)*(params->map_size/2+tx))/ params->pixel_per_meter;
             }
-            qsort((void*)&dist_to_wall[i][1],130,sizeof(double),cmp1);//******************************ÐÞžÄÕâÀï
-            dist_mid = dist_to_wall[i][65];//******************************ÐÞžÄÕâÀï
+//            qsort((void*)&dist_to_wall[i][1],130,sizeof(double),cmp1);//******************************ÐÞžÄÕâÀï
+//            dist_mid = dist_to_wall[i][65];//******************************ÐÞžÄÕâÀï
             for(int j = 1; j < 131; j++)//Ö»ÔÚÒ»¶šœÇ¶ÈÄÚŒì²âÒ»±ßµÄÃÅ *********************************  ÐÞžÄÕâÀï
             {
-                if((dist_to_wall[i][j] - dist_mid)/vars->unit > 0.2 )//Æ«ÀëŽóÓÚ0.2Ã×
+                if((dist_to_wall[i][j] - dist_mid) > 0.2 )//Æ«ÀëŽóÓÚ0.2Ã×
                 {
                     tx = vars->datatemp[i][j][0];
                     ty = vars->datatemp[i][j][1];
-                    if(tx < 490 && ty < 490 && tx > -490 && ty > -490)
+                    if(tx < params->map_size/2-1&& ty < params->map_size/2-1 && tx > -params->map_size/2+1 && ty > -params->map_size/2+1)
                     {
                         //ÏìÒ»Éù
                         //vars->img.at<unsigned char>(tx+(int)params->map_size/2,ty+(int)params->map_size/2) = cv::Scalar(0,0,255);	//ÃÅÐÎÎïÌåÁÁ¶È********************ÐÞžÄÕâÀï
@@ -222,8 +257,10 @@ bool DECOFUNC(processMultiInputData)(void * paramsPtr, void * varsPtr, QVector<Q
                 outputdata->door_y = IMUy + sin(temp_angle)*URGData[ door_index_in_URGData] / vars->unit;
                 tx = vars->datatemp[i][door_index_in_URGData][0];
                 ty = vars->datatemp[i][door_index_in_URGData][1];
-                cv::circle(vars->img, cv::Point(tx+params->map_size/2, ty+params->map_size/2),4,cv::Scalar(255,0,0),4);
-
+                if(tx < params->map_size/2-5&& ty < params->map_size/2-5 && tx > -params->map_size/2+5 && ty > -params->map_size/2+5)
+                {
+                    cv::circle(vars->img, cv::Point(tx+params->map_size/2, ty+params->map_size/2),4,cv::Scalar(255,0,0),4);
+                }
             }
             else
             {

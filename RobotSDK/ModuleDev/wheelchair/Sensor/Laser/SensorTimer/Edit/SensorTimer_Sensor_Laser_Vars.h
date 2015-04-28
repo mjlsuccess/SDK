@@ -67,6 +67,7 @@ public:
     urg_measurement_type_t measurement_type;
     urg_t lurg;
     urg_t rurg;
+
 };
 
 /*! @}*/ 

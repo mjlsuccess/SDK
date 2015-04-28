@@ -60,7 +60,7 @@ public:
 public:
 	//*******************Please add variables below*******************
     int datatemp[100][600][2];
-    cv::Mat img;
+    cv::Mat img,img_hough;
     double IMUx_0,IMUy_0;
     int unit;
     double PI;

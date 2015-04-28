@@ -177,7 +177,7 @@ bool DECOFUNC(processMultiInputData)(void * paramsPtr, void * varsPtr, QVector<Q
         vars->laserfilewriter.write((char *)&time,sizeof(time));
 
         char lasertype = 'L';
-        vars->laserfilewriter.write((char *)&timestamp,sizeof(timestamp));
+        vars->laserfilewriter.write((char *)&lasertype,sizeof(lasertype));
         vars->laserfilewriter.write((char *)(inputdata_1.front()->ldata),sizeof(short)*(inputdata_1.front()->datasize));
 
         lasertype = 'R';

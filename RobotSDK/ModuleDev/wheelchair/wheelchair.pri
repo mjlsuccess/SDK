@@ -1,3 +1,57 @@
+SOURCES += \
+    ./Processor/doordetection/ProcessorMulti/Edit/ProcessorMulti_Processor_doordetection_PrivFunc.cpp \
+    ./Processor/doordetection/ProcessorMulti/NoEdit/ProcessorMulti_Processor_doordetection_PrivCoreFunc.cpp \
+    ./Processor/doordetection/VisualizationMono/Edit/VisualizationMono_Processor_doordetection_PrivFunc.cpp \
+    ./Processor/doordetection/VisualizationMono/NoEdit/VisualizationMono_Processor_doordetection_PrivCoreFunc.cpp \
+    ./Processor/SimpleCollect/ProcessorMulti/Edit/ProcessorMulti_Processor_SimpleCollect_PrivFunc.cpp \
+    ./Processor/SimpleCollect/ProcessorMulti/NoEdit/ProcessorMulti_Processor_SimpleCollect_PrivCoreFunc.cpp \
+    ./Processor/SimpleCollect/VisualizationMono/Edit/VisualizationMono_Processor_SimpleCollect_PrivFunc.cpp \
+    ./Processor/SimpleCollect/VisualizationMono/NoEdit/VisualizationMono_Processor_SimpleCollect_PrivCoreFunc.cpp \
+    ./Sensor/Camera/SensorInternalEvent/Edit/SensorInternalEvent_Sensor_Camera_PrivFunc.cpp \
+    ./Sensor/Camera/SensorInternalEvent/NoEdit/SensorInternalEvent_Sensor_Camera_PrivCoreFunc.cpp \
+    ./Sensor/Camera/Simulator/Edit/Simulator_Sensor_Camera_PrivFunc.cpp \
+    ./Sensor/Camera/Simulator/NoEdit/Simulator_Sensor_Camera_PrivCoreFunc.cpp \
+    ./Sensor/Camera/StorageMono/Edit/StorageMono_Sensor_Camera_PrivFunc.cpp \
+    ./Sensor/Camera/StorageMono/NoEdit/StorageMono_Sensor_Camera_PrivCoreFunc.cpp \
+    ./Sensor/Camera/VisualizationMono/Edit/VisualizationMono_Sensor_Camera_PrivFunc.cpp \
+    ./Sensor/Camera/VisualizationMono/NoEdit/VisualizationMono_Sensor_Camera_PrivCoreFunc.cpp \
+    ./Sensor/Joystick/SensorInternalEvent/Edit/SensorInternalEvent_Sensor_Joystick_PrivFunc.cpp \
+    ./Sensor/Joystick/SensorInternalEvent/NoEdit/SensorInternalEvent_Sensor_Joystick_PrivCoreFunc.cpp \
+    ./Sensor/Joystick/StorageMono/Edit/StorageMono_Sensor_Joystick_PrivFunc.cpp \
+    ./Sensor/Joystick/StorageMono/NoEdit/StorageMono_Sensor_Joystick_PrivCoreFunc.cpp \
+    ./Sensor/Joystick/VisualizationMono/Edit/VisualizationMono_Sensor_Joystick_PrivFunc.cpp \
+    ./Sensor/Joystick/VisualizationMono/NoEdit/VisualizationMono_Sensor_Joystick_PrivCoreFunc.cpp \
+    ./Sensor/Laser/SensorTimer/Edit/SensorTimer_Sensor_Laser_PrivFunc.cpp \
+    ./Sensor/Laser/SensorTimer/NoEdit/SensorTimer_Sensor_Laser_PrivCoreFunc.cpp \
+    ./Sensor/Laser/Simulator/Edit/Simulator_Sensor_Laser_PrivFunc.cpp \
+    ./Sensor/Laser/Simulator/NoEdit/Simulator_Sensor_Laser_PrivCoreFunc.cpp \
+    ./Sensor/Laser/StorageMono/Edit/StorageMono_Sensor_Laser_PrivFunc.cpp \
+    ./Sensor/Laser/StorageMono/NoEdit/StorageMono_Sensor_Laser_PrivCoreFunc.cpp \
+    ./Sensor/Laser/VisualizationMono/Edit/VisualizationMono_Sensor_Laser_PrivFunc.cpp \
+    ./Sensor/Laser/VisualizationMono/NoEdit/VisualizationMono_Sensor_Laser_PrivCoreFunc.cpp \
+    ./Sensor/stm32comm/Simulator/Edit/Simulator_Sensor_stm32comm_PrivFunc.cpp \
+    ./Sensor/stm32comm/Simulator/NoEdit/Simulator_Sensor_stm32comm_PrivCoreFunc.cpp \
+    ./Sensor/stm32comm/SourceDrainMono/Edit/SourceDrainMono_Sensor_stm32comm_PrivFunc.cpp \
+    ./Sensor/stm32comm/SourceDrainMono/NoEdit/SourceDrainMono_Sensor_stm32comm_PrivCoreFunc.cpp \
+    ./Sensor/stm32comm/StorageMono/Edit/StorageMono_Sensor_stm32comm_PrivFunc.cpp \
+    ./Sensor/stm32comm/StorageMono/NoEdit/StorageMono_Sensor_stm32comm_PrivCoreFunc.cpp \
+    ./Sensor/stm32comm/VisualizationMono/Edit/VisualizationMono_Sensor_stm32comm_PrivFunc.cpp \
+    ./Sensor/stm32comm/VisualizationMono/NoEdit/VisualizationMono_Sensor_stm32comm_PrivCoreFunc.cpp \
+    $$PWD/Processor/PathGenerator/ProcessorMono/Edit/ProcessorMono_Processor_PathGenerator_PrivFunc.cpp \
+    $$PWD/Processor/PathGenerator/ProcessorMono/NoEdit/ProcessorMono_Processor_PathGenerator_PrivCoreFunc.cpp \
+    $$PWD/Processor/PathGenerator/VisualizationMono/Edit/VisualizationMono_Processor_PathGenerator_PrivFunc.cpp \
+    $$PWD/Processor/PathGenerator/VisualizationMono/NoEdit/VisualizationMono_Processor_PathGenerator_PrivCoreFunc.cpp \
+    $$PWD/Calibration/Laser/VisualizationMulti/Edit/VisualizationMulti_Calibration_Laser_PrivFunc.cpp \
+    $$PWD/Calibration/Laser/VisualizationMulti/NoEdit/VisualizationMulti_Calibration_Laser_PrivCoreFunc.cpp\
+	./Calibration/Laser/VisualizationMono/Edit/VisualizationMono_Calibration_Laser_PrivFunc.cpp	\
+	./Calibration/Laser/VisualizationMono/NoEdit/VisualizationMono_Calibration_Laser_PrivCoreFunc.cpp	\
+	./Processor/CameraLaser/ProcessorMulti/Edit/ProcessorMulti_Processor_CameraLaser_PrivFunc.cpp	\
+	./Processor/CameraLaser/ProcessorMulti/NoEdit/ProcessorMulti_Processor_CameraLaser_PrivCoreFunc.cpp	\
+	./Processor/CameraLaser/VisualizationMono/Edit/VisualizationMono_Processor_CameraLaser_PrivFunc.cpp	\
+	./Processor/CameraLaser/VisualizationMono/NoEdit/VisualizationMono_Processor_CameraLaser_PrivCoreFunc.cpp \	\
+	./Processor/Control/ProcessorMulti/Edit/ProcessorMulti_Processor_Control_PrivFunc.cpp	\
+	./Processor/Control/ProcessorMulti/NoEdit/ProcessorMulti_Processor_Control_PrivCoreFunc.cpp	
+
 HEADERS += \
     ./Processor/doordetection/ProcessorMulti/Edit/ProcessorMulti_Processor_doordetection_ParamsData.h \
     ./Processor/doordetection/ProcessorMulti/Edit/ProcessorMulti_Processor_doordetection_Vars.h \
@@ -82,48 +136,25 @@ HEADERS += \
     $$PWD/Processor/PathGenerator/VisualizationMono/Edit/VisualizationMono_Processor_PathGenerator_ParamsData.h \
     $$PWD/Processor/PathGenerator/VisualizationMono/Edit/VisualizationMono_Processor_PathGenerator_Vars.h \
     $$PWD/Processor/PathGenerator/VisualizationMono/NoEdit/VisualizationMono_Processor_PathGenerator_PrivCoreFunc.h \
-    $$PWD/Processor/PathGenerator/VisualizationMono/NoEdit/VisualizationMono_Processor_PathGenerator_PrivFunc.h
+    $$PWD/Processor/PathGenerator/VisualizationMono/NoEdit/VisualizationMono_Processor_PathGenerator_PrivFunc.h \
+    $$PWD/Calibration/Laser/VisualizationMulti/Edit/VisualizationMulti_Calibration_Laser_ParamsData.h \
+    $$PWD/Calibration/Laser/VisualizationMulti/Edit/VisualizationMulti_Calibration_Laser_Vars.h \
+    $$PWD/Calibration/Laser/VisualizationMulti/NoEdit/VisualizationMulti_Calibration_Laser_PrivCoreFunc.h \
+    $$PWD/Calibration/Laser/VisualizationMulti/NoEdit/VisualizationMulti_Calibration_Laser_PrivFunc.h\
+	./Calibration/Laser/VisualizationMono/Edit/VisualizationMono_Calibration_Laser_ParamsData.h	\
+	./Calibration/Laser/VisualizationMono/Edit/VisualizationMono_Calibration_Laser_Vars.h	\
+	./Calibration/Laser/VisualizationMono/NoEdit/VisualizationMono_Calibration_Laser_PrivFunc.h	\
+	./Calibration/Laser/VisualizationMono/NoEdit/VisualizationMono_Calibration_Laser_PrivCoreFunc.h	\
+	./Processor/CameraLaser/ProcessorMulti/Edit/ProcessorMulti_Processor_CameraLaser_ParamsData.h	\
+	./Processor/CameraLaser/ProcessorMulti/Edit/ProcessorMulti_Processor_CameraLaser_Vars.h	\
+	./Processor/CameraLaser/ProcessorMulti/NoEdit/ProcessorMulti_Processor_CameraLaser_PrivFunc.h	\
+	./Processor/CameraLaser/ProcessorMulti/NoEdit/ProcessorMulti_Processor_CameraLaser_PrivCoreFunc.h	\
+	./Processor/CameraLaser/VisualizationMono/Edit/VisualizationMono_Processor_CameraLaser_ParamsData.h	\
+	./Processor/CameraLaser/VisualizationMono/Edit/VisualizationMono_Processor_CameraLaser_Vars.h	\
+	./Processor/CameraLaser/VisualizationMono/NoEdit/VisualizationMono_Processor_CameraLaser_PrivFunc.h	\
+	./Processor/CameraLaser/VisualizationMono/NoEdit/VisualizationMono_Processor_CameraLaser_PrivCoreFunc.h \	\
+	./Processor/Control/ProcessorMulti/Edit/ProcessorMulti_Processor_Control_ParamsData.h	\
+	./Processor/Control/ProcessorMulti/Edit/ProcessorMulti_Processor_Control_Vars.h	\
+	./Processor/Control/ProcessorMulti/NoEdit/ProcessorMulti_Processor_Control_PrivFunc.h	\
+	./Processor/Control/ProcessorMulti/NoEdit/ProcessorMulti_Processor_Control_PrivCoreFunc.h	
 
-SOURCES += \
-    ./Processor/doordetection/ProcessorMulti/Edit/ProcessorMulti_Processor_doordetection_PrivFunc.cpp \
-    ./Processor/doordetection/ProcessorMulti/NoEdit/ProcessorMulti_Processor_doordetection_PrivCoreFunc.cpp \
-    ./Processor/doordetection/VisualizationMono/Edit/VisualizationMono_Processor_doordetection_PrivFunc.cpp \
-    ./Processor/doordetection/VisualizationMono/NoEdit/VisualizationMono_Processor_doordetection_PrivCoreFunc.cpp \
-    ./Processor/SimpleCollect/ProcessorMulti/Edit/ProcessorMulti_Processor_SimpleCollect_PrivFunc.cpp \
-    ./Processor/SimpleCollect/ProcessorMulti/NoEdit/ProcessorMulti_Processor_SimpleCollect_PrivCoreFunc.cpp \
-    ./Processor/SimpleCollect/VisualizationMono/Edit/VisualizationMono_Processor_SimpleCollect_PrivFunc.cpp \
-    ./Processor/SimpleCollect/VisualizationMono/NoEdit/VisualizationMono_Processor_SimpleCollect_PrivCoreFunc.cpp \
-    ./Sensor/Camera/SensorInternalEvent/Edit/SensorInternalEvent_Sensor_Camera_PrivFunc.cpp \
-    ./Sensor/Camera/SensorInternalEvent/NoEdit/SensorInternalEvent_Sensor_Camera_PrivCoreFunc.cpp \
-    ./Sensor/Camera/Simulator/Edit/Simulator_Sensor_Camera_PrivFunc.cpp \
-    ./Sensor/Camera/Simulator/NoEdit/Simulator_Sensor_Camera_PrivCoreFunc.cpp \
-    ./Sensor/Camera/StorageMono/Edit/StorageMono_Sensor_Camera_PrivFunc.cpp \
-    ./Sensor/Camera/StorageMono/NoEdit/StorageMono_Sensor_Camera_PrivCoreFunc.cpp \
-    ./Sensor/Camera/VisualizationMono/Edit/VisualizationMono_Sensor_Camera_PrivFunc.cpp \
-    ./Sensor/Camera/VisualizationMono/NoEdit/VisualizationMono_Sensor_Camera_PrivCoreFunc.cpp \
-    ./Sensor/Joystick/SensorInternalEvent/Edit/SensorInternalEvent_Sensor_Joystick_PrivFunc.cpp \
-    ./Sensor/Joystick/SensorInternalEvent/NoEdit/SensorInternalEvent_Sensor_Joystick_PrivCoreFunc.cpp \
-    ./Sensor/Joystick/StorageMono/Edit/StorageMono_Sensor_Joystick_PrivFunc.cpp \
-    ./Sensor/Joystick/StorageMono/NoEdit/StorageMono_Sensor_Joystick_PrivCoreFunc.cpp \
-    ./Sensor/Joystick/VisualizationMono/Edit/VisualizationMono_Sensor_Joystick_PrivFunc.cpp \
-    ./Sensor/Joystick/VisualizationMono/NoEdit/VisualizationMono_Sensor_Joystick_PrivCoreFunc.cpp \
-    ./Sensor/Laser/SensorTimer/Edit/SensorTimer_Sensor_Laser_PrivFunc.cpp \
-    ./Sensor/Laser/SensorTimer/NoEdit/SensorTimer_Sensor_Laser_PrivCoreFunc.cpp \
-    ./Sensor/Laser/Simulator/Edit/Simulator_Sensor_Laser_PrivFunc.cpp \
-    ./Sensor/Laser/Simulator/NoEdit/Simulator_Sensor_Laser_PrivCoreFunc.cpp \
-    ./Sensor/Laser/StorageMono/Edit/StorageMono_Sensor_Laser_PrivFunc.cpp \
-    ./Sensor/Laser/StorageMono/NoEdit/StorageMono_Sensor_Laser_PrivCoreFunc.cpp \
-    ./Sensor/Laser/VisualizationMono/Edit/VisualizationMono_Sensor_Laser_PrivFunc.cpp \
-    ./Sensor/Laser/VisualizationMono/NoEdit/VisualizationMono_Sensor_Laser_PrivCoreFunc.cpp \
-    ./Sensor/stm32comm/Simulator/Edit/Simulator_Sensor_stm32comm_PrivFunc.cpp \
-    ./Sensor/stm32comm/Simulator/NoEdit/Simulator_Sensor_stm32comm_PrivCoreFunc.cpp \
-    ./Sensor/stm32comm/SourceDrainMono/Edit/SourceDrainMono_Sensor_stm32comm_PrivFunc.cpp \
-    ./Sensor/stm32comm/SourceDrainMono/NoEdit/SourceDrainMono_Sensor_stm32comm_PrivCoreFunc.cpp \
-    ./Sensor/stm32comm/StorageMono/Edit/StorageMono_Sensor_stm32comm_PrivFunc.cpp \
-    ./Sensor/stm32comm/StorageMono/NoEdit/StorageMono_Sensor_stm32comm_PrivCoreFunc.cpp \
-    ./Sensor/stm32comm/VisualizationMono/Edit/VisualizationMono_Sensor_stm32comm_PrivFunc.cpp \
-    ./Sensor/stm32comm/VisualizationMono/NoEdit/VisualizationMono_Sensor_stm32comm_PrivCoreFunc.cpp \
-    $$PWD/Processor/PathGenerator/ProcessorMono/Edit/ProcessorMono_Processor_PathGenerator_PrivFunc.cpp \
-    $$PWD/Processor/PathGenerator/ProcessorMono/NoEdit/ProcessorMono_Processor_PathGenerator_PrivCoreFunc.cpp \
-    $$PWD/Processor/PathGenerator/VisualizationMono/Edit/VisualizationMono_Processor_PathGenerator_PrivFunc.cpp \
-    $$PWD/Processor/PathGenerator/VisualizationMono/NoEdit/VisualizationMono_Processor_PathGenerator_PrivCoreFunc.cpp

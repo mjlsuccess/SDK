@@ -78,7 +78,6 @@ MainWindow::MainWindow(QWidget *parent) :
     laser_storage->connectExternalTrigger(0,DRAINSLOT);
 
 //    //RLaser
-
 //    SensorTimer* r_laser = new SensorTimer(library, "Sensor_Laser", "r_laser", config,laserInterval);
 //    r_laser->setOutputNodesName(QList<QString>()<<"r_laser_viewer;r_laser_storage");
 //    r_laser->connectExternalTrigger(&laserTmer, SIGNAL(timeout()), SOURCESLOT);
@@ -134,8 +133,8 @@ MainWindow::MainWindow(QWidget *parent) :
     edge.addNode(doordetection, 1, MONITOR);
     edge.addNode(doordetection_viewer, 0, 0);
 
-    edge.addNode(simplecollect, 1, MONITOR);
-    edge.addNode(simplecollect_viewer, 0, 0);
+//    edge.addNode(simplecollect, 1, MONITOR);
+//    edge.addNode(simplecollect_viewer, 0, 0);
 
 
     if(storage)

@@ -106,7 +106,7 @@ bool DECOFUNC(generateSourceData)(void * paramsPtr, void * varsPtr, void * outpu
 
     int i,n=outputdata->datasize;
     char lasertype;
-    vars->file.read((char *)lasertype,sizeof(char));
+    vars->file.read((char *)&lasertype,sizeof(char));
     if(lasertype == 'L')
     {
         vars->file.read((char *)outputdata->ldata,sizeof(short)*(outputdata->datasize));
@@ -122,7 +122,7 @@ bool DECOFUNC(generateSourceData)(void * paramsPtr, void * varsPtr, void * outpu
         return 0;
 
 
-    vars->file.read((char *)lasertype,sizeof(char));
+    vars->file.read((char *)&lasertype,sizeof(char));
     if(lasertype == 'R')
     {
         vars->file.read((char *)outputdata->rdata,sizeof(short)*(outputdata->datasize));

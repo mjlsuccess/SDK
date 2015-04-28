@@ -98,9 +98,13 @@ bool DECOFUNC(processMonoInputData)(void * paramsPtr, void * varsPtr, QVector<vo
 	E.g. outputPortIndex=QList<int>()<<(outportindex1)<<(outportindex2)...
 	*/
     PG_kelly pg;
-    trajec_state startState = {0.0, 0.0, PI / 2, 0}, endState = {0.7, 2, PI / 2 , 0};
+    trajec_state startState = {0, 0, PI / 2, 0};
+    trajec_state endState = {0, 3, PI / 2 , 0};
+    double x, y, theta;
 
-
+    x = outputdata->startPoint.x = inputdata.front()->x;
+    y = outputdata->startPoint.y = inputdata.front()->y;
+    theta = outputdata->startPoint.theta = inputdata.front()->theta;
     for (int i = 0; i < outputdata->trajSets.size(); i++)
         outputdata->trajSets[i].clear();
     outputdata->trajSets.clear();
@@ -112,13 +116,15 @@ bool DECOFUNC(processMonoInputData)(void * paramsPtr, void * varsPtr, QVector<vo
             tmp.clear();
 
             endState.x = i * 0.1;
-            qDebug() << pg.Path_Generating(startState, endState);
-            qDebug() << pg.state_data.size();
+            qDebug() << "stat:" << pg.Path_Generating(startState, endState);
+            //qDebug() << "size: " << pg.state_data.size();
             int num = pg.state_data.size();
             for (int i = 0; i < num; i++)
             {
-                traj.x = pg.state_data[i].x;
-                traj.y = pg.state_data[i].y;
+                double tx = pg.state_data[i].x;
+                double ty = pg.state_data[i].y;
+                traj.x = x + tx * sin(theta) + ty * cos(theta);
+                traj.y = y - tx * cos(theta) + ty * sin(theta);
                 tmp.push_back(traj);
             }
             outputdata->trajSets.push_back(tmp);

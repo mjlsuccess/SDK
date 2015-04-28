@@ -48,10 +48,13 @@
 HEADERS += wheelchair.h\
         wheelchair_global.h \
 
-SOURCES += wheelchair.cpp
+
+SOURCES += wheelchair.cpp \
 
 PROJNAME = wheelchair
 INSTTYPE = MOD
+
+QT += multimedia
 
 
 

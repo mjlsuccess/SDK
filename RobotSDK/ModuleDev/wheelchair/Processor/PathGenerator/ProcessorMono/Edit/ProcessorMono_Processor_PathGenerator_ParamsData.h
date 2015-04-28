@@ -84,8 +84,11 @@ public:
 	ProcessorMono_Processor_PathGenerator_Data() 
 	{
         for (int i = 0; i < trajSets.size(); i++)
-                    trajSets[i].clear();
-                trajSets.clear();
+            trajSets[i].clear();
+        trajSets.clear();
+        startPoint.x = 0;
+        startPoint.y = 0;
+        startPoint.theta = M_PI / 2;
 	}
 	/*! \fn ~ProcessorMono_Processor_PathGenerator_Data()
 		\brief The destructor of ProcessorMono_Processor_PathGenerator_Data. [required]
@@ -95,12 +98,13 @@ public:
 	~ProcessorMono_Processor_PathGenerator_Data() 
 	{
         for (int i = 0; i < trajSets.size(); i++)
-                    trajSets[i].clear();
-                trajSets.clear();
+            trajSets[i].clear();
+        trajSets.clear();
 	}
 public:
 	//*******************Please add variables below*******************
      QVector<QVector<trajec_state> > trajSets;
+     trajec_state startPoint;
 };
 
 /*! \def ProcessorMono_Processor_PathGenerator_OUTPUTPORTSNUMBER

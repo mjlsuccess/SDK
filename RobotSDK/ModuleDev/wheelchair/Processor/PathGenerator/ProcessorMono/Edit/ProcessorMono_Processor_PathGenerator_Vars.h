@@ -39,7 +39,6 @@ public:
 	*/
 	ProcessorMono_Processor_PathGenerator_Vars() 
 	{
-		
 	}
 	/*! \fn ~ProcessorMono_Processor_PathGenerator_Vars()
 		\brief The destructor of ProcessorMono_Processor_PathGenerator_Vars. [required]
@@ -48,11 +47,9 @@ public:
 	*/
 	~ProcessorMono_Processor_PathGenerator_Vars() 
 	{
-		
 	}
 public:
 	//*******************Please add variables below*******************
-
 };
 
 /*! @}*/ 

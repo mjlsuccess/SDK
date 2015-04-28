@@ -65,7 +65,7 @@ public:
     double roll, pitch, yaw, lastyaw;
     int leftencoder, rightencoder, lastleftencoder,lastrightencoder;
     double leftspeed, rightspeed, leftodom, rightodom;
-    double x, y, theta, deltaleft, deltaright, deltatheta;
+    double x, y, theta, deltaleft, deltaright, deltatheta, deltaIMUtheta, deltaEncodertheta;
     QTime qlasttimestamp;
     int encoderrange; //编码器转一圈对应的脉冲数
     double pi;

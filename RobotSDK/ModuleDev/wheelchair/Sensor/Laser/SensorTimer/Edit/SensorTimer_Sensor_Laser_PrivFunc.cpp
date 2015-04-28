@@ -179,6 +179,7 @@ bool DECOFUNC(generateSourceData)(void * paramsPtr, void * varsPtr, void * outpu
             }
         }
     }
+    delete [] urgdata;
 	return 1;
 }
 

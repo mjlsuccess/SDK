@@ -25,6 +25,7 @@ bool DECOFUNC(setParamsVarsOpenNode)(QString qstrConfigName, QString qstrNodeTyp
     GetParamValue(xmlloader, vars, linear_scale);
     GetParamValue(xmlloader, vars, startsimple_index);
     GetParamValue(xmlloader, vars, endsimple_index);
+    GetParamValue(xmlloader, vars, manual_index);
 
     if(vars->joysticksub == NULL)
     {
@@ -53,7 +54,7 @@ bool DECOFUNC(handleVarsCloseNode)(void * paramsPtr, void * varsPtr)
     {
         vars->joysticksub->stopReceiveSlot();
     }
-	return 1;
+    return 1;startsimple_index
 }
 
 void DECOFUNC(getInternalTrigger)(void * paramsPtr, void * varsPtr, QObject * & internalTrigger, QString & internalTriggerSignal)
@@ -122,6 +123,15 @@ bool DECOFUNC(generateSourceData)(void * paramsPtr, void * varsPtr, void * outpu
 
     outputdata->startsimple = msg->buttons[vars->startsimple_index];
     outputdata->endsimple = msg->buttons[vars->endsimple_index];
+/////////////////
+    vars->currentcontrolmodel = msg->buttons[vars->manual_index];
+
+    if(vars->currentcontrolmodel == 0 && vars->lastcontrolModel == 1)
+        vars->controlmodel = !vars->controlmodel; //1-manual control; 0-auto control;下降沿改变
+
+    vars->lastcontrolModel = vars->currentcontrolmodel;
+    //output
+    outputdata->manual_control = vars->controlmodel;
 
 	return 1;
 }

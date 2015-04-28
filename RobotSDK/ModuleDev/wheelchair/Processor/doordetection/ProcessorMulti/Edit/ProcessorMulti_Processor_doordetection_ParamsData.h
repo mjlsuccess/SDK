@@ -22,6 +22,7 @@
   //  ÁÙÊ±ÓÃ
 #include <opencv2/core/core.hpp>  //  ÁÙÊ±ÓÃ
 #include <opencv2/highgui/highgui.hpp>  //  ÁÙÊ±ÓÃ
+#include <opencv/cv.h>
 
 //2 input data header(s) refered
 

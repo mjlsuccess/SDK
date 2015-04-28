@@ -42,10 +42,8 @@ public:
         glview = new GLViewer();
         shownum = 5;
         glview->makeCurrent();
-        glview->clearDisplayList();
-        displaylistbase = glGenLists(shownum);
-        for(unsigned int i=0; i<shownum; i++)
-            glview->addDisplayList(displaylistbase+i);
+
+       movingTraj.clear();
     }
 	/*! \fn ~VisualizationMono_Processor_PathGenerator_Vars()
 		\brief The destructor of VisualizationMono_Processor_PathGenerator_Vars. [required]
@@ -57,12 +55,14 @@ public:
         glview->clearDisplayList();
         if(glview->parent() ==NULL)
             delete glview;
+        movingTraj.clear();
 	}
 public:
 	//*******************Please add variables below*******************
     GLViewer *glview;
     GLuint shownum;
     GLuint displaylistbase;
+    QVector<trajec_state> movingTraj;
 };
 
 /*! @}*/ 

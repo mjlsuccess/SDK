@@ -18,8 +18,9 @@ bool DECOFUNC(setParamsVarsOpenNode)(QString qstrConfigName, QString qstrNodeTyp
 	2: initialize variables (vars).
 	3: If everything is OK, return 1 for successful opening and vice versa.
 	*/
-	
-	return 1;
+    GetParamValue(xmlloader,params,loadOfflineData);
+    qDebug() << params->loadOfflineData;
+    return 1;
 }
 
 bool DECOFUNC(handleVarsCloseNode)(void * paramsPtr, void * varsPtr)
@@ -80,10 +81,57 @@ bool DECOFUNC(processMonoDrainData)(void * paramsPtr, void * varsPtr, QVector<vo
 	/*
 	Function: process draindata.
 	*/
+    vars->glview->clearDisplayList();
+    vars->displaylistbase = glGenLists(vars->shownum);
+    for(unsigned int i=0; i<vars->shownum; i++)
+    {
+        vars->glview->addDisplayList(vars->displaylistbase+i);
+    }
+
+    vars->movingTraj.push_back(draindata.front()->startPoint);
+
+    FILE * traj = fopen("traj", "w");
+    for (QVector<trajec_state>::iterator pt = vars->movingTraj.begin();
+         pt != vars->movingTraj.end(); pt++)
+    {
+        fprintf(traj, "%lf %lf\n", pt->x, pt->y);
+    }
+    fclose(traj);
+
+
+
+    qDebug() << draindata.front()->startPoint.x << ' ' << draindata.front()->startPoint.y;
     glNewList(vars->displaylistbase,GL_COMPILE_AND_EXECUTE);
     glPushMatrix();
     glLineWidth(1);
-    glColor3f(0,1,0);
+
+    if (params->loadOfflineData)
+    {
+        FILE *offlinedata = fopen("trajdata", "r");
+        if (offlinedata)
+        {
+            double tx, ty;
+            glColor3f(0, 1, 1);
+            glBegin(GL_LINE_STRIP);
+            while (fscanf(offlinedata, "%lf %lf", &tx, &ty) == 2)
+            {
+                glVertex3f(tx, ty, 0);
+            }
+            glEnd();
+        }
+    }
+
+    glColor3f(1, 0, 0);
+    glBegin(GL_LINE_STRIP);
+    for (QVector<trajec_state>::iterator pt = vars->movingTraj.begin();
+         pt != vars->movingTraj.end(); pt++)
+    {
+        glVertex3f(pt->x, pt->y, 0);
+    }
+    glEnd();
+
+
+    glColor3f(0, 1, 0);
 
     for (QVector<QVector<trajec_state> >::iterator tlist = draindata.front()->trajSets.begin();
          tlist != draindata.front()->trajSets.end();
@@ -93,7 +141,6 @@ bool DECOFUNC(processMonoDrainData)(void * paramsPtr, void * varsPtr, QVector<vo
         for (QVector<trajec_state>::iterator pt = tlist->begin();
              pt != tlist->end(); pt++)
         {
-            qDebug() << pt->x << ' ' << pt->y;
             glVertex3f(pt->x, pt->y, 0);
         }
         glEnd();
@@ -101,6 +148,7 @@ bool DECOFUNC(processMonoDrainData)(void * paramsPtr, void * varsPtr, QVector<vo
 
     glPopMatrix();
     glEndList();
+    vars->glview->update();
     return 1;
 }
 

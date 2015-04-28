@@ -53,7 +53,7 @@ public:
 	*/
 	VisualizationMono_Processor_PathGenerator_Params() 
 	{
-		
+        loadOfflineData = 0;
 	}
 	/*! \fn ~VisualizationMono_Processor_PathGenerator_Params()
 		\brief The destructor of VisualizationMono_Processor_PathGenerator_Params. [required]
@@ -66,7 +66,7 @@ public:
 	}
 public:
 	//*******************Please add variables below*******************
-
+    int loadOfflineData;
 };
 
 //There is no Output Data.

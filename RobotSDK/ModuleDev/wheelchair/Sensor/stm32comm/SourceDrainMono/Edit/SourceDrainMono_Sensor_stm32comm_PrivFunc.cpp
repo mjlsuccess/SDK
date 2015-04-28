@@ -150,7 +150,7 @@ bool DECOFUNC(generateSourceData)(void * paramsPtr, void * varsPtr, void * outpu
              }
 
             ////left wheel
-             vars->deltaleft = vars->leftencoder-vars->lastleftencoder;
+             vars->deltaleft = -(vars->leftencoder-vars->lastleftencoder);
              if(vars->qlasttimestamp.isNull())
              {
                  vars->qlasttimestamp = QTime::currentTime();
@@ -167,13 +167,13 @@ bool DECOFUNC(generateSourceData)(void * paramsPtr, void * varsPtr, void * outpu
              {
                  vars->deltaleft -= params->maxpusle;
              }
-             vars->deltaleft = vars->deltaleft*params->distPerPulse;
+             vars->deltaleft = vars->deltaleft*params->distPerPulse*params->ratio;
              vars->leftodom += vars->deltaleft;
              vars->leftspeed = vars->deltaleft/deltatime;
              vars->lastleftencoder = vars->leftencoder;
 
              ////right wheel,左右轮编码器差一个系数
-             vars->deltaright = (vars->rightencoder - vars->lastrightencoder)*params->ratio;
+             vars->deltaright = (vars->rightencoder - vars->lastrightencoder);
              if(vars->deltaright  < -params->maxpusle/2)
              {
                  vars->deltaright  += params->maxpusle;
@@ -188,18 +188,21 @@ bool DECOFUNC(generateSourceData)(void * paramsPtr, void * varsPtr, void * outpu
              vars->lastrightencoder = vars->rightencoder;
 
              ////使用编码器计算角度
-             //vars->deltatheta = (vars->deltaright-vars->deltaleft)/params->WheelBase;
+             vars->deltaEncodertheta = (vars->deltaright-vars->deltaleft)/params->WheelBase;
              ////使用IMU计算角度
-             vars->deltatheta = -(vars->yaw - vars->lastyaw)*vars->pi/1800.0;
+             vars->deltaIMUtheta = -(vars->yaw - vars->lastyaw)*vars->pi/1800.0;
 
              vars->lastyaw = vars->yaw;
 
              ///IMU角度范围是 0~360
              double max_angle = 2*vars->pi;
-             if(vars->deltatheta > max_angle/2)
-                 vars->deltatheta -= max_angle;
-             else if(vars->deltatheta < -max_angle/2)
-                 vars->deltatheta += max_angle;
+             if(vars->deltaIMUtheta > max_angle/2)
+                 vars->deltaIMUtheta -= max_angle;
+             else if(vars->deltaIMUtheta < -max_angle/2)
+                 vars->deltaIMUtheta += max_angle;
+             ///使用那个角度？
+             //vars->deltatheta = vars->deltaEncodertheta;
+             vars->deltatheta = vars->deltaIMUtheta;
 
              double deltaodom = (vars->deltaleft + vars->deltaright)/2;
              vars->x += deltaodom*cos(vars->theta + vars->deltatheta/2);
@@ -253,22 +256,19 @@ bool DECOFUNC(processMonoDrainData)(void * paramsPtr, void * varsPtr, QVector<vo
     double left_vel = inputdata->linear_vel + params->WheelBase*inputdata->angular_vel/2;
     double right_vel = inputdata->linear_vel - params->WheelBase*inputdata->angular_vel/2;
 
-//    double tmp_motor = left_vel/(params->WheelBase/2)*1.5; //1.5 =>大齿轮90齿，小齿轮60齿，转速与齿轮数成反比，转速与角速度正比（w=2*pi*n/60）
-//    short left_motor = tmp_motor*2000/(2*vars->pi); //500线编码器，4倍频后转一圈2000脉冲。该变量的单位是（脉冲／秒）
 
-//    tmp_motor = right_vel/(params->WheelBase/2)*1.5;
-//    short right_motor = tmp_motor*2000/(2*vars->pi);
-    //20150328 没装编码器前的测试
-
-    short left_motor = left_vel * 800;
-    short right_motor = right_vel * 800;
+//    double left_motor = left_vel*25*4096/(2*vars->pi*params->WheelRadius)/100; //编码器1024线，4倍频后转一圈4096脉冲，电机是25:1(单位脉冲/10ms)
+//    double right_motor = right_vel*25*4096/(2*vars->pi*params->WheelRadius)/100; //编码器1024线，4倍频后转一圈4096脉冲，电机是25:1(单位脉冲/10ms)
+    ///20150328 没装编码器前的测试
+    short left_motor = left_vel * 1000;
+    short right_motor = right_vel * 1000;
 
     char dataput[7];
     char data_size = 4;
     dataput[0] = params->send_packhead.at(0);
     dataput[1] = data_size;
-    *(short*)&dataput[2] = left_motor;
-    *(short*)&dataput[4] = right_motor;
+    *(short*)&dataput[2] = (short)left_motor;
+    *(short*)&dataput[4] = (short)right_motor;
     dataput[6] = params->send_packtail.at(0);
 
     int n = vars->serialport->write(dataput, 7);
